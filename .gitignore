@@ -1,0 +1,7 @@
+/target
+/doc
+/.settings
+.project
+.classpath
+/exceptions.html
+/callCmd.bat
