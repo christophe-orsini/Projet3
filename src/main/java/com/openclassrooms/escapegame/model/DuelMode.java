@@ -1,16 +1,8 @@
-package gamemode;
+package com.openclassrooms.escapegame.model;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
-
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
-import org.ini4j.Ini;
-
-import combinaison.App;
-import combinaison.Combinaison;
 
 /**
  * Classe strategie concrete pour le mode de jeu duel
@@ -19,14 +11,9 @@ import combinaison.Combinaison;
  */
 public class DuelMode implements IPlayMode
 {
-	private static final Logger logger = Logger.getLogger(App.class);
+	private static final Logger logger = Logger.getLogger(DuelMode.class);
 	private static Scanner entree = new Scanner(System.in); // pour lecture clavier
 	
-	// declaration des parametres de l'application
-	private int nbDigits = 4;
-	private int maxTry = 5;
-	private boolean developpeur = false;
-			
 	/**
 	 * Constructeur
 	 */
@@ -34,55 +21,35 @@ public class DuelMode implements IPlayMode
 	{
 		ConsoleAppender appender = (ConsoleAppender)  logger.getAppender("DailyRollingFile"); 
 		logger.addAppender(appender);
-		
-		// lecture du fichier app.ini
-		Ini ini = new Ini();
-		try
-		{
-			ini.load(new FileReader("app.ini"));
-			
-			Ini.Section dev = ini.get("developpeur");
-			developpeur = Integer.parseInt(dev.get("active"))==0?false:true;
-			Ini.Section dflt = ini.get("config");
-			nbDigits = Integer.parseInt(dflt.get("nb_digits"));
-			maxTry = Integer.parseInt(dflt.get("max_try"));
-		} 
-		catch (FileNotFoundException e)
-		{
-			// utilisation de valeurs par defaut
-		} 
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
 	}
 	
 	public void play()
 	{
 		logger.info("Mode duel");
-		logger.debug("Création de la combinaison aléatoire de départ de longueur " + nbDigits);
+		logger.debug("Création de la combinaison aléatoire de départ de longueur " + AppConfig.getInstance().getNbDigits());
 		
-		Combinaison myCombinaison = new Combinaison(nbDigits); // combinaison de l'ordinateur
-		Combinaison searchCombinaison = new Combinaison(nbDigits); // premiere proposoition de l'ordinateur
+		Combinaison myCombinaison = new Combinaison(AppConfig.getInstance().getNbDigits()); // combinaison de l'ordinateur
+		Combinaison searchCombinaison = new Combinaison(AppConfig.getInstance().getNbDigits()); // premiere proposoition de l'ordinateur
 		
 		logger.info("Combinaison de l'ordinateur = " + myCombinaison);
 		logger.info("Proposition de l'ordinateur = " + searchCombinaison);
 
-		if (developpeur)
+		if (AppConfig.getInstance().isDebug())
 		{
 			System.out.println(myCombinaison);
 		}
 
 		// Consignes
-		System.out.println("Nous allons jouer chacun à notre tour pour deviner une combinaison à " + nbDigits + " chiffre(s) en " + maxTry + " tentative(s).");
+		System.out.println("Nous allons jouer chacun à notre tour pour deviner une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) en " +
+				AppConfig.getInstance().getNbTries() + " tentative(s).");
 		System.out.println("Le premier qui arrive à deviner la combinaison de l'autre a gagné.");
-		System.out.println("On commence, pensez à une combinaison à " + nbDigits + " chiffre(s).");
+		System.out.println("On commence, pensez à une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s).");
 		
 		// jeu
 		boolean iWin = false; // flags pour sortir de la boucle
 		boolean youWin = false;
 		int nbTours = 1; // nombres de tours de jeu
-		while (!iWin && !youWin && nbTours <= maxTry)
+		while (!iWin && !youWin && nbTours <= AppConfig.getInstance().getNbTries())
 		{
 			// Propositions
 			System.out.printf("Tour N°%d -\tMa proposition : %s \t\t Votre proposition : ", nbTours, searchCombinaison);
@@ -96,7 +63,7 @@ public class DuelMode implements IPlayMode
 			
 			if (yourProposition.length() != myCombinaison.getNbDigits() || reponse.length() != searchCombinaison.getNbDigits()) // verfification longueur entrée
 			{ 
-				System.out.println("Veuillez entrer exactement " + nbDigits + " valeur(s)SVP !");
+				System.out.println("Veuillez entrer exactement " + AppConfig.getInstance().getNbDigits() + " valeur(s)SVP !");
 				continue;
 			}
 			

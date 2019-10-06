@@ -41,14 +41,17 @@ public final class AppConfig {
 	}
 	 
 	// *********************************************** getters/setters
+	@SuppressWarnings("javadoc")
 	public boolean isDebug() {
 		return _debug;
 	}
 	
+	@SuppressWarnings("javadoc")
 	public int getNbDigits() {
 		return _nbDigits;
 	}
 
+	@SuppressWarnings("javadoc")
 	public int getNbTries() {
 		return _nbTries;
 	}
