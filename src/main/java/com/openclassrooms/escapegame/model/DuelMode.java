@@ -4,6 +4,8 @@ import java.util.Scanner;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
 
+import com.openclassrooms.escapegame.AppConfig;
+
 /**
  * Classe strategie concrete pour le mode de jeu duel
  * @author C.ORSINI
