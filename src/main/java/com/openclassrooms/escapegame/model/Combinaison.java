@@ -17,7 +17,7 @@ public class Combinaison
 	 * <BR />
 	 * Par defaut {@value}
 	 */
-	public static final int MAX_DIGITS = 10;
+	public static final int MAX_DIGITS = 10; // TODO a supprimer
 	
 	
 	// Nombre de chiffres du code
