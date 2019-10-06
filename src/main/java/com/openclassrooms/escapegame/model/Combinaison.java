@@ -1,7 +1,7 @@
 /**
  * 
  */
-package combinaison;
+package com.openclassrooms.escapegame.model;
 
 import java.util.Random;
 

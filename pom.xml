@@ -1,14 +1,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!--  *********************************************************************************************** -->
+	<!-- Projet-->
+	<!--  *********************************************************************************************** -->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.oc.projet3.gameplaustudio</groupId>
-	<artifactId>searchcombinaison</artifactId>
+	<groupId>com.openclassrooms</groupId>
+	<artifactId>gameplaystudio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<name>EscapeGame</name>
+	<description>Jeu Escape Game en mode console</description>
+	<url>https://github.com/christophe-orsini/Projet3</url>
+	<organization>
+		<name>OpenClassrooms</name>
+		<url>https://openclasssrooms.com</url>
+	</organization>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+	<!--  *********************************************** Modules ************************************** -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -20,13 +31,46 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.ini4j</groupId>
-			<artifactId>ini4j</artifactId>
-			<version>0.5.4</version>
-		</dependency>
 	</dependencies>
+	<!--  ************************************************** Profiles ********************************* -->
+	<profiles>
+		<!--  Developpement -->
+		<profile>
+			<id>dev</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources/dev</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<mode.developpeur>true</mode.developpeur>
+			</properties>
+		</profile>
+		<!--  Production -->
+		<profile>
+			<id>prod</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources/prod</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+			<properties>
+				<mode.developpeur>false</mode.developpeur>
+			</properties>
+		</profile>
+	</profiles>
+	<!--  ************************************************** Build ************************************ -->
 	<build>
+	<!-- Plugins -->
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -40,16 +84,9 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>combinaison.App</mainClass>
+					<mainClass>com.openclassrooms.escapegame.App</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	  <distributionManagement>
-    <repository>
-      <id>internal.repo</id>
-      <name>MyCo Internal Repository</name>
-      <url>file://d:/Temp/</url>
-    </repository>
-  </distributionManagement>
 </project>

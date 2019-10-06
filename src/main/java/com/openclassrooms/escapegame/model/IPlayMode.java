@@ -1,4 +1,4 @@
-package gamemode;
+package com.openclassrooms.escapegame.model;
 
 /**
  * Interface de pattern strategy pour utiliser different modes de jeu

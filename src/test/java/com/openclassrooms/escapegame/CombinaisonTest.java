@@ -1,8 +1,10 @@
-package combinaison;
+package com.openclassrooms.escapegame;
 
 import static org.junit.Assert.*;
-import combinaison.Combinaison;
+
 import org.junit.Test;
+
+import com.openclassrooms.escapegame.model.Combinaison;
 
 /**
  * 

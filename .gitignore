@@ -1,5 +1,6 @@
 /target
 /doc
+/logs
 /.settings
 .project
 .classpath
