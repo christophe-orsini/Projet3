@@ -1,8 +1,8 @@
 package com.openclassrooms.escapegame.model;
 
 import java.util.Scanner;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Logger;
+import com.openclassrooms.escapegame.AppConfig;
+import com.openclassrooms.escapegame.AppLog;
 
 /**
  * Classe strategie concrete pour le mode de jeu attaquant
@@ -11,26 +11,15 @@ import org.apache.log4j.Logger;
  */
 public class ChallengerMode implements IPlayMode
 {
-	private static final Logger logger = Logger.getLogger(ChallengerMode.class);
 	private static Scanner entree = new Scanner(System.in); // pour lecture clavier
 
-	// *********************************************************************** constructors
-	/**
-	 * Constructeur
-	 */
-	public ChallengerMode()
-	{
-		ConsoleAppender appender = (ConsoleAppender)  logger.getAppender("DailyRollingFile"); 
-		logger.addAppender(appender);
-	}
-	
 	// ************************************************************************* methods
 	public void play()
 	{
-		logger.info("Mode attaquant");
-		logger.debug("Création de la combinaison aléatoire de départ de longueur " + AppConfig.getInstance().getNbDigits());
+		AppLog.getLogger().info("Mode attaquant");
+		AppLog.getLogger().debug("Création de la combinaison aléatoire de départ de longueur " + AppConfig.getInstance().getNbDigits());
 		Combinaison combinaison = new Combinaison(AppConfig.getInstance().getNbDigits());
-		logger.info("Combinaison = " + combinaison);
+		AppLog.getLogger().info("Combinaison = " + combinaison);
 
 		// Consignes
 		System.out.println("Pensez à une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) et je vais la deviner en " + AppConfig.getInstance().getNbTries() + " tentative(s).");
@@ -50,7 +39,7 @@ public class ChallengerMode implements IPlayMode
 				System.out.println("Veuillez entrer exactement " + AppConfig.getInstance().getNbDigits() + " symboles + - ou = SVP !");
 				continue;
 			}
-			logger.info("Essai n° " + nbTours + " réponse : " + reponse);
+			AppLog.getLogger().info("Essai n° " + nbTours + " réponse : " + reponse);
 			nbTours++;
 
 			// Verification de la combinaison proposée
@@ -69,10 +58,13 @@ public class ChallengerMode implements IPlayMode
 		{
 			nbTours--;
 			System.out.println("YOUPI ! J'ai gangé en " + nbTours + " tentative(s).");
+			AppLog.getLogger().info("Gagné");
 		} 
 		else
 		{
 			System.out.println("Dommage, je n'ai pas trouvé la combinaison.");
+			AppLog.getLogger().info("Perdu");
 		}
+		
 	}
 }

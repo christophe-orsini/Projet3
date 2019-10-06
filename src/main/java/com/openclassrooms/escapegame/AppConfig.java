@@ -1,4 +1,4 @@
-package com.openclassrooms.escapegame.model;
+package com.openclassrooms.escapegame;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
