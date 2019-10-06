@@ -16,7 +16,6 @@ public class ChallengerMode implements IPlayMode
 	// ************************************************************************* methods
 	public void play()
 	{
-		AppLog.getLogger().info("Essai Logger");
 		AppLog.getLogger().info("Mode attaquant");
 		AppLog.getLogger().debug("Création de la combinaison aléatoire de départ de longueur " + AppConfig.getInstance().getNbDigits());
 		Combinaison combinaison = new Combinaison(AppConfig.getInstance().getNbDigits());

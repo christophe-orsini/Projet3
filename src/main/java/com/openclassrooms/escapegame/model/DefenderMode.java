@@ -1,10 +1,8 @@
 package com.openclassrooms.escapegame.model;
 
 import java.util.Scanner;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Logger;
-
 import com.openclassrooms.escapegame.AppConfig;
+import com.openclassrooms.escapegame.AppLog;
 
 /**
  * Classe strategie concrete pour le mode de jeu defenseur
@@ -13,24 +11,14 @@ import com.openclassrooms.escapegame.AppConfig;
  */
 public class DefenderMode implements IPlayMode
 {
-	private static final Logger logger = Logger.getLogger(DefenderMode.class);
 	private static Scanner entree = new Scanner(System.in); // pour lecture clavier
-	
-	/**
-	 * Constructeur
-	 */
-	public DefenderMode()
-	{
-		ConsoleAppender appender = (ConsoleAppender)  logger.getAppender("DailyRollingFile"); 
-		logger.addAppender(appender);
-	}
 	
 	public void play()
 	{
-		logger.info("Mode défenseur");
-		logger.debug("Création de la combinaison aléatoire de longueur " + AppConfig.getInstance().getNbDigits());
+		AppLog.getLogger().info("Mode défenseur");
+		AppLog.getLogger().debug("Création de la combinaison aléatoire de longueur " + AppConfig.getInstance().getNbDigits());
 		Combinaison combinaison = new Combinaison(AppConfig.getInstance().getNbDigits());
-		logger.info("Combinaison = " + combinaison);
+		AppLog.getLogger().info("Combinaison = " + combinaison);
 
 		if (AppConfig.getInstance().isDebug())
 		{
@@ -54,7 +42,7 @@ public class DefenderMode implements IPlayMode
 				System.out.println("Veuillez entrer une combianison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s)SVP !");
 				continue;
 			}
-			logger.info("Essai n° " + nbTours + " combinaison proposée : " + proposition);
+			AppLog.getLogger().info("Essai n° " + nbTours + " combinaison proposée : " + proposition);
 			nbTours++;
 
 			// Verification de la combinaison proposée
@@ -74,10 +62,12 @@ public class DefenderMode implements IPlayMode
 		{
 			nbTours--;
 			System.out.println("BRAVO ! Vous avez gangé en " + nbTours + " tentative(s)");
+			AppLog.getLogger().info("Gagné");
 		} 
 		else
 		{
 			System.out.println("Dommage, vous n'avez pas trouvé la combinaison");
+			AppLog.getLogger().info("Perdu");
 		}
 	}
 }

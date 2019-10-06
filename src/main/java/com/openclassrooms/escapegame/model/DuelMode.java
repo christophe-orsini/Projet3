@@ -5,6 +5,7 @@ import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
 
 import com.openclassrooms.escapegame.AppConfig;
+import com.openclassrooms.escapegame.AppLog;
 
 /**
  * Classe strategie concrete pour le mode de jeu duel
@@ -13,28 +14,18 @@ import com.openclassrooms.escapegame.AppConfig;
  */
 public class DuelMode implements IPlayMode
 {
-	private static final Logger logger = Logger.getLogger(DuelMode.class);
 	private static Scanner entree = new Scanner(System.in); // pour lecture clavier
-	
-	/**
-	 * Constructeur
-	 */
-	public DuelMode()
-	{
-		ConsoleAppender appender = (ConsoleAppender)  logger.getAppender("DailyRollingFile"); 
-		logger.addAppender(appender);
-	}
 	
 	public void play()
 	{
-		logger.info("Mode duel");
-		logger.debug("Création de la combinaison aléatoire de départ de longueur " + AppConfig.getInstance().getNbDigits());
+		AppLog.getLogger().info("Mode duel");
+		AppLog.getLogger().debug("Création de la combinaison aléatoire de départ de longueur " + AppConfig.getInstance().getNbDigits());
 		
 		Combinaison myCombinaison = new Combinaison(AppConfig.getInstance().getNbDigits()); // combinaison de l'ordinateur
 		Combinaison searchCombinaison = new Combinaison(AppConfig.getInstance().getNbDigits()); // premiere proposoition de l'ordinateur
 		
-		logger.info("Combinaison de l'ordinateur = " + myCombinaison);
-		logger.info("Proposition de l'ordinateur = " + searchCombinaison);
+		AppLog.getLogger().info("Combinaison de l'ordinateur = " + myCombinaison);
+		AppLog.getLogger().info("Proposition de l'ordinateur = " + searchCombinaison);
 
 		if (AppConfig.getInstance().isDebug())
 		{
@@ -69,8 +60,8 @@ public class DuelMode implements IPlayMode
 				continue;
 			}
 			
-			logger.info("Essai n° " + nbTours + " combinaison proposée : " + yourProposition);
-			logger.info("Essai n° " + nbTours + " réponse : " + reponse);
+			AppLog.getLogger().info("Essai n° " + nbTours + " combinaison proposée : " + yourProposition);
+			AppLog.getLogger().info("Essai n° " + nbTours + " réponse : " + reponse);
 			
 			// Verifications
 			Combinaison propose = new Combinaison(yourProposition);
@@ -100,18 +91,22 @@ public class DuelMode implements IPlayMode
 		if (youWin)
 		{
 			System.out.println("BRAVO ! Vous avez gangé en " + nbTours + " tentative(s)");
+			AppLog.getLogger().info("Joueur gagne");
 		} 
 		else
 		{
 			System.out.println("Dommage, vous n'avez pas trouvé la combinaison");
+			AppLog.getLogger().info("Joueur perd");
 		}
 		if (iWin)
 		{
 			System.out.println("YOUPI ! J'ai gangé en " + nbTours + " tentative(s).");
+			AppLog.getLogger().info("Ordinateur gagne");
 		} 
 		else
 		{
 			System.out.println("Dommage, je n'ai pas trouvé la combinaison.");
+			AppLog.getLogger().info("Ordinateur perd");
 		}
 	}
 }
