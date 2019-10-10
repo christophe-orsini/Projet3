@@ -10,11 +10,12 @@ import com.openclassrooms.escapegame.utils.AppLog;
  * @author C.ORSINI
  *
  */
-public class ChallengerMode implements IPlayMode
+public class ChallengerMode extends Model
 {
 	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 
 	// ************************************************************************* methods
+	@Override
 	public void play()
 	{
 		AppLog.getLogger().info("Mode attaquant");

@@ -10,7 +10,7 @@ import com.openclassrooms.escapegame.utils.AppLog;
  * @author C.ORSINI
  *
  */
-public class DefenderMode implements IPlayMode
+public class DefenderMode extends Model
 {
 	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 	

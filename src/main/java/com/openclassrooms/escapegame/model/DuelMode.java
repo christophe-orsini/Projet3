@@ -12,7 +12,7 @@ import com.openclassrooms.escapegame.utils.AppLog;
  * @author C.ORSINI
  *
  */
-public class DuelMode implements IPlayMode
+public class DuelMode extends Model
 {
 	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 	
