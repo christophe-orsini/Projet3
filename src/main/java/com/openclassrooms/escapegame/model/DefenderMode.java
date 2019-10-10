@@ -1,8 +1,9 @@
 package com.openclassrooms.escapegame.model;
 
 import java.util.Scanner;
-import com.openclassrooms.escapegame.AppConfig;
-import com.openclassrooms.escapegame.AppLog;
+
+import com.openclassrooms.escapegame.utils.AppConfig;
+import com.openclassrooms.escapegame.utils.AppLog;
 
 /**
  * Classe strategie concrete pour le mode de jeu defenseur

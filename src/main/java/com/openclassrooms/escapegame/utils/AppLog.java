@@ -1,4 +1,4 @@
-package com.openclassrooms.escapegame;
+package com.openclassrooms.escapegame.utils;
 
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
