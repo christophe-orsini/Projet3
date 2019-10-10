@@ -14,7 +14,7 @@ import com.openclassrooms.escapegame.AppLog;
  */
 public class DuelMode implements IPlayMode
 {
-	private static Scanner entree = new Scanner(System.in); // pour lecture clavier
+	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 	
 	public void play()
 	{
@@ -43,13 +43,13 @@ public class DuelMode implements IPlayMode
 		{
 			// Propositions
 			System.out.printf("Tour N°%d -\tMa proposition : %s \t\t Votre proposition : ", nbTours, searchCombinaison);
-			entree = new Scanner(System.in);
-			String yourProposition = entree.nextLine();
+			_entry = new Scanner(System.in);
+			String yourProposition = _entry.nextLine();
 			
 			// Corrections
 			System.out.printf("Tour N°%d -\t%14s : ", nbTours, "Corrections");
-			entree = new Scanner(System.in);
-			String reponse = entree.next();
+			_entry = new Scanner(System.in);
+			String reponse = _entry.next();
 			
 			if (yourProposition.length() != myCombinaison.getNbDigits() || reponse.length() != searchCombinaison.getNbDigits()) // verfification longueur entrée
 			{ 

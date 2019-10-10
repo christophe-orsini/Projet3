@@ -11,7 +11,7 @@ import com.openclassrooms.escapegame.AppLog;
  */
 public class ChallengerMode implements IPlayMode
 {
-	private static Scanner entree = new Scanner(System.in); // pour lecture clavier
+	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 
 	// ************************************************************************* methods
 	public void play()
@@ -30,8 +30,8 @@ public class ChallengerMode implements IPlayMode
 		{
 			System.out.printf("%46s%d : %s%n","Voici ma proposition N°", nbTours, combinaison);
 			System.out.printf("%50s", "Veuillez m'indiquer mes erreurs avec + - = : ");
-			entree = new Scanner(System.in);
-			String reponse = entree.nextLine();
+			_entry = new Scanner(System.in);
+			String reponse = _entry.nextLine();
 
 			if (reponse.length() != combinaison.getNbDigits()) // verfification longueur entrée
 			{ 

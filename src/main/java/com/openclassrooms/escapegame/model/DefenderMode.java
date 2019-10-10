@@ -11,7 +11,7 @@ import com.openclassrooms.escapegame.AppLog;
  */
 public class DefenderMode implements IPlayMode
 {
-	private static Scanner entree = new Scanner(System.in); // pour lecture clavier
+	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 	
 	public void play()
 	{
@@ -34,8 +34,8 @@ public class DefenderMode implements IPlayMode
 		while (!win && nbTours <= AppConfig.getInstance().getNbTries())
 		{
 			System.out.printf("%35s %d : ", "Veuillez faire la proposition N°", nbTours);
-			entree = new Scanner(System.in);
-			String proposition = entree.nextLine();
+			_entry = new Scanner(System.in);
+			String proposition = _entry.nextLine();
 
 			if (proposition.length() != combinaison.getNbDigits()) // verfification longueur entrée
 			{ 
