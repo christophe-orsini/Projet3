@@ -46,16 +46,22 @@ public class DuelMode extends Model
 			_entry = new Scanner(System.in);
 			String yourProposition = _entry.nextLine();
 			
+			if (yourProposition.length() != myCombinaison.getNbDigits() || !myCombinaison.checkDigits(yourProposition)) // verfification longueur entrée
+			{ 
+				System.out.println("Veuillez entrer exactement " + AppConfig.getInstance().getNbDigits() + " chiffre(s) SVP !");
+				continue;
+			}
 			// Corrections
 			System.out.printf("Tour N°%d -\t%14s : ", nbTours, "Corrections");
 			_entry = new Scanner(System.in);
 			String reponse = _entry.next();
 			
-			if (yourProposition.length() != myCombinaison.getNbDigits() || reponse.length() != searchCombinaison.getNbDigits()) // verfification longueur entrée
+			if (reponse.length() != searchCombinaison.getNbDigits() || !searchCombinaison.checkSymbols(reponse)) // verfification longueur entrée
 			{ 
-				System.out.println("Veuillez entrer exactement " + AppConfig.getInstance().getNbDigits() + " valeur(s)SVP !");
+				System.out.println("Veuillez entrer exactement " + AppConfig.getInstance().getNbDigits() + " symbole(s) SVP !");
 				continue;
 			}
+			
 			AppLog.getLogger().info("Ma proposition N°" + nbTours + " : " + searchCombinaison + " -> Reponse : " + reponse);
 			
 			// Verifications
