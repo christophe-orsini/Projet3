@@ -38,7 +38,7 @@ public class DefenderMode extends Model
 			_entry = new Scanner(System.in);
 			String proposition = _entry.nextLine();
 
-			if (proposition.length() != combinaison.getNbDigits()) // verfification longueur entrée
+			if (proposition.length() != combinaison.getNbDigits() || !combinaison.checkDigits(proposition)) // verfification longueur entrée
 			{ 
 				System.out.println("Veuillez entrer une combianison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s)SVP !");
 				continue;
