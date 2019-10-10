@@ -18,7 +18,7 @@ public class DefenderMode implements IPlayMode
 		AppLog.getLogger().info("Mode défenseur");
 		AppLog.getLogger().debug("Création de la combinaison aléatoire de longueur " + AppConfig.getInstance().getNbDigits());
 		Combinaison combinaison = new Combinaison(AppConfig.getInstance().getNbDigits());
-		AppLog.getLogger().info("Combinaison = " + combinaison);
+		AppLog.getLogger().info("Combinaison à trouver : " + combinaison);
 
 		if (AppConfig.getInstance().isDebug())
 		{
@@ -42,8 +42,6 @@ public class DefenderMode implements IPlayMode
 				System.out.println("Veuillez entrer une combianison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s)SVP !");
 				continue;
 			}
-			AppLog.getLogger().info("Essai n° " + nbTours + " combinaison proposée : " + proposition);
-			nbTours++;
 
 			// Verification de la combinaison proposée
 			Combinaison propose = new Combinaison(proposition);
@@ -55,19 +53,21 @@ public class DefenderMode implements IPlayMode
 			{
 				System.out.printf("%37s : %s%n", "Resultat", combinaison.compareTo(propose));
 			}
+			AppLog.getLogger().info("Essai N°" + nbTours + " combinaison proposée : " + proposition +" -> réponse : " + combinaison.compareTo(propose));
+			nbTours++;
 		}
-
+		nbTours--; // nombre tentatives
+		
 		// resultat
 		if (win)
 		{
-			nbTours--;
 			System.out.println("BRAVO ! Vous avez gangé en " + nbTours + " tentative(s)");
-			AppLog.getLogger().info("Gagné");
+			AppLog.getLogger().info("Gagné en " + nbTours + " tentative(s)");
 		} 
 		else
 		{
 			System.out.println("Dommage, vous n'avez pas trouvé la combinaison");
-			AppLog.getLogger().info("Perdu");
+			AppLog.getLogger().info("Perdu aprés " + nbTours + " tentative(s)");
 		}
 	}
 }
