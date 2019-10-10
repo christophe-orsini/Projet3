@@ -26,5 +26,7 @@ En mode console, dans le dossier du projet, lancer la commande `mvn exec:java -q
      - Ajout pattern singleton pour logs et config
      - organisation des packages
 - Version 1.0.1  
-		- Ajout du Pattern MVC
-	 
+     - Ajout du Pattern MVC
+- Version 1.0.2  
+      - Correction des bugs N°1 et N°2
+		 

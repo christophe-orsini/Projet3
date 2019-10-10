@@ -35,7 +35,7 @@ public class ChallengerMode extends Model
 			_entry = new Scanner(System.in);
 			String reponse = _entry.nextLine();
 
-			if (reponse.length() != combinaison.getNbDigits()) // verfification longueur entrée
+			if (reponse.length() != combinaison.getNbDigits()  || !combinaison.checkSymbols(reponse)) // verfification longueur entrée
 			{ 
 				System.out.println("Veuillez entrer exactement " + AppConfig.getInstance().getNbDigits() + " symboles + - ou = SVP !");
 				continue;
