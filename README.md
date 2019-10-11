@@ -3,8 +3,8 @@
 ## Project N°3 Escape Game ONLINE
 
 * Développeur : Christophe ORSINI
-* Version : 0.0.0
-* Date : 2019-10-03
+* Version : 1.0.2-SNAPSHOT
+* Date : 2019-10-11T09:20:24Z
 
 ---
 ### Chargement
@@ -14,7 +14,10 @@ Cloner le dépôt à [cette adresse](https://github.com/christophe-orsini/Projet
 > Vous devez avoir **java 8 (1.8.0.222)** ou supérieur et **maven 3.6.2** ou supérieur sur votre ordinateur pour pouvoir exécuter cette application
 
 ### Exécution
-En mode console, dans le dossier du projet, lancer la commande `mvn exec:java -q`
+Pour la première utilisation, après avoir cloné le dépôt, il faut :  
+1. Se placer dans le dossier du projet dans lequel vous venez de le cloner
+2. A la première utilisation, lancer la commande `mvn package`. Cette commande fabrique l'exécutable et démarre l'application
+3. Pour les autres utilisations, lancer la commande `java -jar target\gameplaystudio-1.0.2-SNAPSHOT` cela évitera de reconstruire l'application à chaque fois
 
 ---
 #### Notes de versions

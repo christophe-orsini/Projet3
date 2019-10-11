@@ -65,14 +65,16 @@
 			</activation>
 			<properties>
 				<mode.developpeur>false</mode.developpeur>
+				<timestamp>${maven.build.timestamp}</timestamp>
 			</properties>
 		</profile>
 	</profiles>
 	<!--  ************************************************** Build ************************************ -->
 	<build>
-	<!-- Plugins -->
+	<!-- *************************************************** Plugins ********************************** -->
 		<plugins>
 			<plugin>
+			<!-- exec -->
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.6.0</version>
@@ -89,10 +91,11 @@
 					<mainClass>com.openclassrooms.escapegame.Application</mainClass>
 				</configuration>
 			</plugin>
+			<!--  jar -->
 			<plugin>
 		    <groupId>org.apache.maven.plugins</groupId>
 		    <artifactId>maven-jar-plugin</artifactId>
-		    <version>2.4</version>
+		    <version>3.1.2</version>
 		    <configuration>
 		      <archive>
 		        <manifest>
@@ -101,6 +104,35 @@
 		      </archive>
 		    </configuration>
 		    </plugin>
+		    <!--  resources -->
+		    <plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-resources-plugin</artifactId>
+			  <version>3.1.0</version>
+			  <executions>
+			    <execution>
+			      <id>readme-md</id>
+			      <phase>package</phase>
+			      <goals>
+			        <goal>copy-resources</goal>
+			      </goals>
+			      <configuration>
+			        <outputDirectory>${project.basedir}</outputDirectory>
+			        <overwrite>true</overwrite>
+			        <resources>                                        
+			          <resource>
+			            <directory>${project.basedir}/src/main/resources</directory>
+			            <includes>
+			              <include>README.md</include>
+			            </includes>
+			            <filtering>true</filtering>
+			          </resource>
+			        </resources>
+			        <encoding>UTF-8</encoding>
+			      </configuration>            
+			    </execution>
+			  </executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
