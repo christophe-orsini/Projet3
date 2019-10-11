@@ -11,7 +11,9 @@ import java.util.Properties;
  *
  */
 public final class AppConfig {
+	
 	private static AppConfig _instance;
+	private String _version;
 	private boolean _debug;
 	private int _nbDigits;
 	private int _nbTries;
@@ -23,7 +25,8 @@ public final class AppConfig {
 		{
 			InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties");
 			properties.load(input);
-			_debug = properties.getProperty("developpeur")=="true"?true:false;
+			_version = properties.getProperty("developpeur");
+			_debug = properties.getProperty("developpeur").equals("true")?true:false;
 			_nbDigits = Integer.parseInt(properties.getProperty("config.nb_digits"));
 			_nbTries = Integer.parseInt(properties.getProperty("config.nb_tries"));
 		}
@@ -42,17 +45,25 @@ public final class AppConfig {
 	 
 	// *********************************************** getters/setters
 	@SuppressWarnings("javadoc")
-	public boolean isDebug() {
+	public String getVersion()
+	{
+		return _version;
+	}
+	@SuppressWarnings("javadoc")
+	public boolean isDebug()
+	{
 		return _debug;
 	}
 	
 	@SuppressWarnings("javadoc")
-	public int getNbDigits() {
+	public int getNbDigits()
+	{
 		return _nbDigits;
 	}
 
 	@SuppressWarnings("javadoc")
-	public int getNbTries() {
+	public int getNbTries()
+	{
 		return _nbTries;
 	}
 	

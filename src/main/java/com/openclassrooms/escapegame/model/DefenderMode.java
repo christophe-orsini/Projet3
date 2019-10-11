@@ -14,6 +14,7 @@ public class DefenderMode extends Model
 {
 	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 	
+	@Override
 	public void play()
 	{
 		AppLog.getLogger().info("Mode défenseur");
@@ -23,7 +24,7 @@ public class DefenderMode extends Model
 
 		if (AppConfig.getInstance().isDebug())
 		{
-			System.out.println(combinaison);
+			System.out.println("Développement : solution = " + combinaison);
 		}
 
 		// Consignes

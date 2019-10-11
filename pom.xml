@@ -45,9 +45,6 @@
 					</resource>
 				</resources>
 			</build>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
 				<mode.developpeur>true</mode.developpeur>
 			</properties>
@@ -63,6 +60,9 @@
 					</resource>
 				</resources>
 			</build>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<mode.developpeur>false</mode.developpeur>
 			</properties>
@@ -78,6 +78,8 @@
 				<version>1.6.0</version>
 				<executions>
 					<execution>
+					<id>my-execution</id>
+					<phase>package</phase>
 						<goals>
 							<goal>java</goal>
 						</goals>
@@ -87,6 +89,18 @@
 					<mainClass>com.openclassrooms.escapegame.Application</mainClass>
 				</configuration>
 			</plugin>
+			<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-jar-plugin</artifactId>
+		    <version>2.4</version>
+		    <configuration>
+		      <archive>
+		        <manifest>
+		        	<mainClass>com.openclassrooms.escapegame.Application</mainClass>
+		        </manifest>
+		      </archive>
+		    </configuration>
+		    </plugin>
 		</plugins>
 	</build>
 </project>
