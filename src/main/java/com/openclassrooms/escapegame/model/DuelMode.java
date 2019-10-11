@@ -91,17 +91,17 @@ public class DuelMode extends Model
 		// resultat
 		if (youWin)
 		{
-			System.out.println("BRAVO ! Vous avez gangé en " + nbTours + " tentative(s)");
-			AppLog.getLogger().info("Jouer gagne en " + nbTours + " tentative(s)");
+			System.out.println("BRAVO ! Vous avez gangé en " + nbTours + " tentative(s). Ma combinaison était : " + myCombinaison);
+			AppLog.getLogger().info("Joueur gagne en " + nbTours + " tentative(s)");
 		} 
 		else
 		{
-			System.out.println("Dommage, vous n'avez pas trouvé la combinaison");
+			System.out.println("Dommage, vous n'avez pas trouvé la combinaison. C'était : " + myCombinaison);
 			AppLog.getLogger().info("Joueur perd aprés " + nbTours + " tentative(s)");
 		}
 		if (iWin)
 		{
-			System.out.println("YOUPI ! J'ai gangé en " + nbTours + " tentative(s).");
+			System.out.println("YOUPI ! J'ai gangé en " + nbTours + " tentative(s). J'ai trouvé : " + searchCombinaison);
 			AppLog.getLogger().info("Ordinateur gagne en " + nbTours + " tentative(s)");
 		} 
 		else

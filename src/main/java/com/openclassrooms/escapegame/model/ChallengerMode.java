@@ -1,9 +1,7 @@
 package com.openclassrooms.escapegame.model;
 
 import java.util.Scanner;
-
-import com.openclassrooms.escapegame.utils.AppConfig;
-import com.openclassrooms.escapegame.utils.AppLog;
+import com.openclassrooms.escapegame.utils.*;
 
 /**
  * Classe strategie concrete pour le mode de jeu attaquant
@@ -59,7 +57,7 @@ public class ChallengerMode extends Model
 		// resultat
 		if (win)
 		{
-			System.out.println("YOUPI ! J'ai gangé en " + nbTours + " tentative(s).");
+			System.out.println("YOUPI ! J'ai gangé en " + nbTours + " tentative(s). La réponse est : " + combinaison);
 			AppLog.getLogger().info("Gagné en " + nbTours + " tentative(s)");
 		} 
 		else
