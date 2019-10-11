@@ -14,6 +14,7 @@ public class DefenderMode extends Model
 {
 	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 	
+	@Override
 	public void play()
 	{
 		AppLog.getLogger().info("Mode défenseur");
@@ -23,7 +24,7 @@ public class DefenderMode extends Model
 
 		if (AppConfig.getInstance().isDebug())
 		{
-			System.out.println(combinaison);
+			System.out.println("Développement : solution = " + combinaison);
 		}
 
 		// Consignes
@@ -62,12 +63,12 @@ public class DefenderMode extends Model
 		// resultat
 		if (win)
 		{
-			System.out.println("BRAVO ! Vous avez gangé en " + nbTours + " tentative(s)");
+			System.out.println("BRAVO ! Vous avez gangé en " + nbTours + " tentative(s). La réponse est : " + combinaison);
 			AppLog.getLogger().info("Gagné en " + nbTours + " tentative(s)");
 		} 
 		else
 		{
-			System.out.println("Dommage, vous n'avez pas trouvé la combinaison");
+			System.out.println("Dommage, vous n'avez pas trouvé la combinaison. La réponse était : " + combinaison);
 			AppLog.getLogger().info("Perdu aprés " + nbTours + " tentative(s)");
 		}
 	}

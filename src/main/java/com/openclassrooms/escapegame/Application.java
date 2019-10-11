@@ -3,7 +3,6 @@
  */
 package com.openclassrooms.escapegame;
 
-
 import com.openclassrooms.escapegame.controller.Controller;
 import com.openclassrooms.escapegame.controller.MainController;
 
