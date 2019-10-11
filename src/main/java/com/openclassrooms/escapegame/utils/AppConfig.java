@@ -11,6 +11,10 @@ import java.util.Properties;
  *
  */
 public final class AppConfig {
+	// Constantes par defaut si le fichier config.properties n'est pas trouvé
+	private final boolean DEFAULT_DEBUG = true;
+	private final int DEFAULT_DIGITS = 4;
+	private final int DEFAULT_TRIES = 5;
 	
 	private static AppConfig _instance;
 	private String _version;
@@ -33,9 +37,9 @@ public final class AppConfig {
 		catch (FileNotFoundException e)
 		{
 			// Utilisation de valeurs par defaut arbitraires
-			_debug = true;
-			_nbDigits = 4;
-			_nbTries = 5;
+			_debug = DEFAULT_DEBUG;
+			_nbDigits = DEFAULT_DIGITS;
+			_nbTries = DEFAULT_TRIES;
 		}
 		catch (IOException e)
 		{
