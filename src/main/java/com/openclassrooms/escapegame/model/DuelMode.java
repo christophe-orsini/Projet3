@@ -1,4 +1,4 @@
-package com.openclassrooms.escapegame.model;
+/*package com.openclassrooms.escapegame.model;
 
 import java.util.Scanner;
 import org.apache.log4j.ConsoleAppender;
@@ -12,7 +12,7 @@ import com.openclassrooms.escapegame.utils.AppLog;
  * @author C.ORSINI
  *
  */
-public class DuelMode extends Model
+/*public class DuelMode extends Model
 {
 	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 	
@@ -110,4 +110,4 @@ public class DuelMode extends Model
 			AppLog.getLogger().info("Ordinateur perd aprés " + nbTours + " tentative(s)");
 		}
 	}
-}
+}*/

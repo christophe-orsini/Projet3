@@ -10,6 +10,10 @@ public class ErrorView
 	private String _message;
 	
 	// *************************************************************** constructors
+	/**
+	 * Prend un message en parametre
+	 * @param message
+	 */
 	public ErrorView(String message)
 	{
 		_message = message;

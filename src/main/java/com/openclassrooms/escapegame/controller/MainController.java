@@ -27,12 +27,12 @@ public class MainController
 			case 1:
 				DefenderModel defenderModel	= new DefenderModel(); // choix 1 creation du modele defenseur...
 				DefenderController defenderController = new DefenderController(defenderModel); // ... et du controleur correspondant
-				defenderController.displayView(); // affichage de la vue cree dans le controleur
+				defenderController.run();
 				break;
 			case 2:
 				ChallengerModel challengerModel	= new ChallengerModel();
 				ChallengerController challengerController = new ChallengerController(challengerModel);
-				challengerController.displayView();
+				challengerController.run();
 				break;
 			case 3:
 				break;

@@ -6,15 +6,15 @@ import com.openclassrooms.escapegame.utils.AppConfig;
 import com.openclassrooms.escapegame.utils.AppLog;
 
 /**
- * Modèle du mode dèfenseur qui gère le jeu en collaboration avec Combinaison
+ * Modèle du mode défenseur qui gère le jeu en collaboration avec Combinaison
  * @author C.ORSINI
  *
  */
 public class DefenderModel extends Observable
 {
-	private Combinaison _searchedCombinaison;
-	private boolean _win;
-	private String _reponse;
+	private Combinaison _searchedCombinaison; // la combinaison rec=herchee
+	private boolean _win; // flag pour la victoire
+	private String _response; // reponse de l'ordinateur sous forme de symboles + - =
 	
 	// ******************************************************* constructors
 	/**
@@ -41,9 +41,9 @@ public class DefenderModel extends Observable
 		return _win;
 	}
 	@SuppressWarnings("javadoc")
-	public String getReponse()
+	public String getResponse()
 	{
-		return _reponse;
+		return _response;
 	}
 	// ******************************************************* methods
 	/**
@@ -57,7 +57,7 @@ public class DefenderModel extends Observable
 		{
 			_win = true;
 		}
-		_reponse = _searchedCombinaison.compareTo(propose); // elabore la reponse
+		_response = _searchedCombinaison.compareTo(propose); // elabore la reponse
 		setChanged();
 		notifyObservers();
 	}

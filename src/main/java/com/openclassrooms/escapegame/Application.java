@@ -14,8 +14,10 @@ public class Application
 	@SuppressWarnings("javadoc")
 	public static void main(String[] args)
 	{
+		// creation du controleur principal
 		MainController mainController = new MainController();
 		
+		// execution 
 		mainController.run();
 	}
 }
