@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author C.ORSINI
  *
  */
-public class MainMenuView extends View
+public class MainMenuView
 {
 	private static Scanner _entry = new Scanner(System.in);
 	
@@ -16,8 +16,7 @@ public class MainMenuView extends View
 	 * @param firstime boolean : true si c'est le premier appel sinon false
 	 * @return le numero choisi
 	 */
-	@Override
-	public int show(boolean firstime)
+	public int display(boolean firstime)
 	{
 		// menu principal
 		System.out.println("\nMenu principal");

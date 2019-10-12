@@ -4,7 +4,6 @@
 package com.openclassrooms.escapegame.model;
 
 import java.util.Random;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
