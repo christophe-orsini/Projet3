@@ -8,6 +8,10 @@ import com.openclassrooms.escapegame.view.*;
  */
 public class MainController
 {
+	private Model _model;
+	private Controller _controller;
+	
+	// ************************************************************************** methods
 	/**
 	 * Method principale d'execution du jeu permettant de choisir un mode de jeu
 	 */
@@ -23,21 +27,26 @@ public class MainController
 			switch (choice)
 			{
 			case 1:
-				Model defenderModel	= new DefenderModel(); // choix 1 creation du modele defenseur...
-				Controller defenderController = new DefenderController(defenderModel); // ... et du controleur correspondant
-				defenderController.run();
+				_model	= new DefenderModel(); // choix 1 creation du modele defenseur...
+				_controller = new DefenderController(_model); // ... et du controleur correspondant
+				_controller.run();
 				break;
 			case 2:
+				//TODO a changer
 				ChallengerModel challengerModel	= new ChallengerModel();
 				ChallengerController challengerController = new ChallengerController(challengerModel);
 				challengerController.run();
 				break;
 			case 3:
+				// TODO a changer
 				DualModel dualModel	= new DualModel();
 				DualController dualController = new DualController(dualModel);
 				dualController.run();
 				break;
 			case 4:
+				if (_controller != null) {
+					_controller.run();
+				}
 			case 0:
 				break;
 			default:
