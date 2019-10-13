@@ -1,9 +1,7 @@
 package com.openclassrooms.escapegame.controller;
 
-import com.openclassrooms.escapegame.model.ChallengerModel;
-import com.openclassrooms.escapegame.model.DefenderModel;
-import com.openclassrooms.escapegame.view.ErrorView;
-import com.openclassrooms.escapegame.view.MainMenuView;
+import com.openclassrooms.escapegame.model.*;
+import com.openclassrooms.escapegame.view.*;
 
 /**
  * Controleur principal du pattern MVC
@@ -25,8 +23,8 @@ public class MainController
 			switch (choice)
 			{
 			case 1:
-				DefenderModel defenderModel	= new DefenderModel(); // choix 1 creation du modele defenseur...
-				DefenderController defenderController = new DefenderController(defenderModel); // ... et du controleur correspondant
+				Model defenderModel	= new DefenderModel(); // choix 1 creation du modele defenseur...
+				Controller defenderController = new DefenderController(defenderModel); // ... et du controleur correspondant
 				defenderController.run();
 				break;
 			case 2:
@@ -35,6 +33,9 @@ public class MainController
 				challengerController.run();
 				break;
 			case 3:
+				DualModel dualModel	= new DualModel();
+				DualController dualController = new DualController(dualModel);
+				dualController.run();
 				break;
 			case 4:
 			case 0:

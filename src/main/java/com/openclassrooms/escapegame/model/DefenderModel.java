@@ -1,21 +1,14 @@
 package com.openclassrooms.escapegame.model;
 
-import java.util.Observable;
-
-import com.openclassrooms.escapegame.utils.AppConfig;
-import com.openclassrooms.escapegame.utils.AppLog;
+import com.openclassrooms.escapegame.utils.*;
 
 /**
  * Modèle du mode défenseur qui gère le jeu en collaboration avec Combinaison
  * @author C.ORSINI
  *
  */
-public class DefenderModel extends Observable
+public class DefenderModel extends Model
 {
-	private Combinaison _searchedCombinaison; // la combinaison rec=herchee
-	private boolean _win; // flag pour la victoire
-	private String _response; // reponse de l'ordinateur sous forme de symboles + - =
-	
 	// ******************************************************* constructors
 	/**
 	 * Constructeur créant une combinaison à trouver
@@ -24,41 +17,25 @@ public class DefenderModel extends Observable
 	{
 		AppLog.getLogger().info("Mode défenseur");
 		AppLog.getLogger().debug("Création de la combinaison aléatoire de longueur " + AppConfig.getInstance().getNbDigits());
-		_searchedCombinaison = new Combinaison(AppConfig.getInstance().getNbDigits());
-		AppLog.getLogger().info("Combinaison à trouver : " + _searchedCombinaison);
-	}
-	// ******************************************************* getters/setters
-	/**
-	 * Retourne la combinaison sous forme de String
-	 * @return String : la combinaison
-	 */
-	public String getSearchedCombinaison() {
-		return _searchedCombinaison.toString();
-	}
-	@SuppressWarnings("javadoc")
-	public boolean isWin()
-	{
-		return _win;
-	}
-	@SuppressWarnings("javadoc")
-	public String getResponse()
-	{
-		return _response;
+		_searched = new Combinaison(AppConfig.getInstance().getNbDigits());
+		AppLog.getLogger().info("Combinaison à trouver : " + _searched);
+		setChanged();
+		notifyObservers(new ModelState(_searched, _proposed, _result, _win));
 	}
 	// ******************************************************* methods
 	/**
 	 * Vérifie si la combinaison proposée correspond à la combianaison à trouver
 	 * @param proposition String : La combinaison proposée
 	 */
-	public void verify(String proposition)
+	public void manageEntry(String proposition)
 	{
 		Combinaison propose = new Combinaison(proposition); // Transforme la proposition String en Combinaison ...
-		if (_searchedCombinaison.equals(propose)) // ... pour verifier l'egalite
+		if (_searched.equals(propose)) // ... pour verifier l'egalite
 		{
 			_win = true;
 		}
-		_response = _searchedCombinaison.compareTo(propose); // elabore la reponse
+		_result = _searched.compareTo(propose); // elabore la reponse
 		setChanged();
-		notifyObservers();
+		notifyObservers(new ModelState(_searched, _proposed, _result, _win));
 	}
 }
