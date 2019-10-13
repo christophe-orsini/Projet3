@@ -12,12 +12,17 @@ import com.openclassrooms.escapegame.controller.*;
 public class Application
 {
 	@SuppressWarnings("javadoc")
-	public static void main(String[] args)
+	public Application()
 	{
 		// creation du controleur principal
 		MainController mainController = new MainController();
 		
 		// execution 
 		mainController.run();
+	}
+	@SuppressWarnings("javadoc")
+	public static void main(String[] args)
+	{
+		new Application();
 	}
 }
