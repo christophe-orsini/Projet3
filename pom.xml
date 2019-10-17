@@ -124,6 +124,7 @@
 									<directory>${project.basedir}/src/main/resources</directory>
 									<includes>
 										<include>README.md</include>
+										<include>run.bat</include>
 									</includes>
 									<filtering>true</filtering>
 								</resource>
