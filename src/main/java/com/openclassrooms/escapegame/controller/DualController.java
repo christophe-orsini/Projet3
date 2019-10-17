@@ -5,7 +5,7 @@ import com.openclassrooms.escapegame.utils.*;
 import com.openclassrooms.escapegame.view.*;
 
 /**
- * Contrôleur du mode défenseur qui vérifie les entrées de la vue et transmet au modèle 
+ * Contrôleur du mode duel qui vérifie les entrées de la vue et transmet au modèle 
  * @author C.ORSINI
  *
  */
@@ -13,7 +13,9 @@ public class DualController extends Controller
 {
 	// ***************************************************************** constructors
 	/**
-	 * Constructeur appelé avec un modèle déjà créé. Le constructeur crée la vue
+	 * Constructeur appelé avec un modèle déjà créé.<br />
+	 * Le constructeur crée la vue et demande au modèle de notifier ses changements
+	 * 
 	 * @param model Model : le modèle auquel le controleur passe les commandes
 	 */
 	public DualController(Model model)
@@ -23,9 +25,6 @@ public class DualController extends Controller
 		_model.notifyState();
 	}
 	// *********************************************** methods
-	/**
-	 * execution de la boucle principale du jeu
-	 */
 	@Override
 	public void run()
 	{

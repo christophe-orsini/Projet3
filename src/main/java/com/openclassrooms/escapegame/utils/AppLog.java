@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 
 /**
  * Singleton pour les logs
+ * 
  * @author C.ORSINI
  *
  */
@@ -12,6 +13,7 @@ public final class AppLog {
 	private static AppLog _instance;
 	private static final Logger _logger = Logger.getLogger(AppLog.class);
 
+	// ************************************************************************ constructors
 	private AppLog() 
 	{
 		ConsoleAppender appender = (ConsoleAppender)  _logger.getAppender("DailyRollingFile"); 
@@ -31,6 +33,11 @@ public final class AppLog {
 		}
 		return AppLog._instance;
 	}
+	/**
+	 * Obtenir une instance du logger
+	 * 
+	 * @return Logger : Le logger
+	 */
 	public final static Logger getLogger()
 	{
 		if (AppLog._instance == null)
@@ -39,5 +46,4 @@ public final class AppLog {
 		}
 		return AppLog._logger;
 	}
-	
 }

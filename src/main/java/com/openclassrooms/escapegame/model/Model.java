@@ -11,14 +11,12 @@ import com.openclassrooms.escapegame.utils.AppConfig;
  */
 public abstract class Model extends Observable
 {
-	/*protected Combinaison _searched; // Combinaison rechechee
-	protected Combinaison _proposed; // Combinaison proposee
-	protected String _result; // Symboles du resultat + - =
-	protected boolean _iWin; // flag de victoire de l'ordinateur
-	protected boolean _youWin; // flag de victoire du joueur*/
 	protected ModelState _modelState;
 	
 	// *************************************************************** constructors
+	/**
+	 * Constructeur par defaut créant un ModelState
+	 */
 	public Model()
 	{
 		_modelState = new ModelState();
@@ -26,7 +24,7 @@ public abstract class Model extends Observable
 	
 	// *************************************************************** methods
 	/**
-	 * Notifie au observeurs l'état du modèle en poussant un ModelState
+	 * Notifie aux observeurs l'état du modèle en poussant un ModelState
 	 */
 	public void notifyState() {
 		setChanged();
@@ -44,6 +42,7 @@ public abstract class Model extends Observable
 	}
 	/**
 	 * Traite une entrée de la vue transmise par le controleur
+	 * 
 	 * @param entry String : l'entrée à traiter
 	 */
 	public abstract void manageEntry(String entry);

@@ -1,7 +1,8 @@
 package com.openclassrooms.escapegame.model;
 
 /**
- * Classe de l'état du modèle transmise en push par le modèle a ses observeurs
+ * Classe de l'état du modèle transmise en push par le modèle à ses observeurs
+ * 
  * @author C.ORSINI
  *
  */
@@ -20,6 +21,7 @@ public class ModelState
 	public ModelState()	{}
 	/**
 	 * Constructeur de la classe
+	 * 
 	 * @param searched Combinaison : Combinaison recherchée par le joueur
 	 * @param proposed Combinaison : Combinaison rechercée par l'ordinateur
 	 * @param result String : Résultat d'une comparaison de combinaisons sous forme de symboles +, - ou =

@@ -6,6 +6,7 @@ import com.openclassrooms.escapegame.utils.*;
 
 /**
  * Modèle du mode duel qui gère le jeu en collaboration avec Combinaison
+ * 
  * @author C.ORSINI
  *
  */

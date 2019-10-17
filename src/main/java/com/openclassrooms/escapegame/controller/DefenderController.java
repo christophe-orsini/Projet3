@@ -13,7 +13,9 @@ public class DefenderController extends Controller
 {
 	// ***************************************************************** constructors
 	/**
-	 * Constructeur appelé avec un modèle déjà créé. Le constructeur crée la vue
+	 * Constructeur appelé avec un modèle déjà créé.<br />
+	 * Le constructeur crée la vue et demande au modèle de notifier ses changements
+	 * 
 	 * @param model Model : le modèle auquel le controleur passe les commandes
 	 */
 	public DefenderController(Model model)
@@ -23,9 +25,6 @@ public class DefenderController extends Controller
 		_model.notifyState();
 	}
 	// *********************************************** methods
-	/**
-	 * execution de la boucle principale du jeu
-	 */
 	@Override
 	public void run()
 	{

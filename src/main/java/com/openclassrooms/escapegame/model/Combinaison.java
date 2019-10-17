@@ -4,17 +4,16 @@
 package com.openclassrooms.escapegame.model;
 
 import java.util.Random;
-import java.util.regex.Pattern;
 
 /**
  * Classe de gestion des combinaisons
+ * 
  * @author C.ORSINI
  */
 public class Combinaison
 {
 	/**
-	 * Le nombre maxi de chiffre d'un code
-	 * <BR />
+	 * Le nombre maxi de chiffre d'un code <BR />
 	 * Par defaut {@value}
 	 */
 	public static final int MAX_DIGITS = 10; // TODO a supprimer
@@ -30,9 +29,9 @@ public class Combinaison
 	
 	// ****************************************************** constructeurs
 	/**
-	 * Constructeur avec un nombre de chiffre voulu pour la combinaison
-	 * <BR />
+	 * Constructeur avec un nombre de chiffre voulu pour la combinaison <BR />
 	 * L'appel de ce constructeur genere une combinaison aleatoire de 'nbDigits' chiffres
+	 * 
 	 * @param nbDigits int : nombre de chiffres de la combinaison > 0 et <= MAX_DIGITS
 	 */
 	public Combinaison(int nbDigits)
@@ -63,9 +62,9 @@ public class Combinaison
 		this(MAX_DIGITS);
 	}
 	/**
-	 * Constructeur avec une combinaison
-	 * <BR />
+	 * Constructeur avec une combinaison <BR />
 	 * La combinaison sera reduite a MAX_DIGITS si elle est plus longue
+	 * 
 	 * @param combinaison String : la combinaison
 	 */
 	public Combinaison(String combinaison)
@@ -113,8 +112,7 @@ public class Combinaison
 		max = new String(newMax);
 	}
 	/**
-	 * Generation aleatoire d'une combinaison de 'nbDigits' chiffres
-	 * @throws InterruptedException 
+	 * Generation aléatoire d'une combinaison de 'nbDigits' chiffres
 	 */
 	private void generateCombinaison()
 	{
@@ -128,10 +126,10 @@ public class Combinaison
 		combinaison = myCombinaison;
 	}
 	/**
-	 * Compare a une autre combinaison et renvoi un code pour le resultat
-	 * <BR />
+	 * Compare a une autre combinaison et renvoi un code pour le resultat<BR />
 	 * Pour chaque digit la methode renvoi + si le chiffre recherche et plus grand<BR />
 	 * - s'il est plus petit ou = si c'est le meme
+	 * 
 	 * @param other Combinaison : l'autre combinaison
 	 * @return String : un code sous forme "+-=" avec 1 symbole par digit
 	 */
@@ -150,11 +148,11 @@ public class Combinaison
 		return result;
 	}
 	/**
-	 * Compare 2 chars et renvoi un resultat sous forme de code + - =
-	 * <BR />
+	 * Compare 2 chars et renvoi un resultat sous forme de code + - = <BR />
 	 * Renvoi 	= si les 2 chars sont egaux<BR />
 	 * 			+ si a > b<BR />
-	 * 			- si a < b<BR />
+	 * 			- si a < b
+	 * 
 	 * @param a char : le premier char
 	 * @param b char : le deuxieme char
 	 * @return String : le resultat sous forme de code +, - ou  =
@@ -173,6 +171,7 @@ public class Combinaison
 	}
 	/**
 	 * Elabore une nouvelle combinaison en fonction dune chaine de + - ou =
+	 * 
 	 * @param code String : Chaine de symbole<BR />
 	 * 			= si le chifre est bon<BR />
 	 * 			+ si le chiffre a deviner est plus grand<BR />
@@ -216,6 +215,7 @@ public class Combinaison
 	}
 	/**
 	 * Verifie si la combinaison est trouve avec un code ne comprenant que des =
+	 * 
 	 * @param code String : Chaine de symbole<BR />
 	 * 			= si le chifre est bon<BR />
 	 * 			+ si le chiffre a deviner est plus grand<BR />
@@ -242,7 +242,6 @@ public class Combinaison
 	{
 		return combinaison;
 	}
-	
 	@Override
 	public boolean equals(Object other)
 	{

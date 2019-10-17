@@ -10,7 +10,7 @@ import com.openclassrooms.escapegame.utils.AppConfig;
 import com.openclassrooms.escapegame.view.View;
 
 /**
- * Ckasse abstraite de gestion des controleurs
+ * Classe abstraite de gestion des controleurs
  * @author C.ORSINI
  *
  */
@@ -18,10 +18,15 @@ public abstract class Controller implements Observer
 {
 	protected Model _model;
 	protected View _view;
-	protected ModelState _modelState;
+	protected ModelState _modelState; // etat du modele
 	protected boolean _win; // flag de victoire
 	
 	// ********************************************************************* constructors
+	/**
+	 * Constructeur s'inscrivant comme observateur du modèle passé en paramètre
+	 * 
+	 * @param model Model : une instance de classe Modele ou dérivée
+	 */
 	public Controller(Model model)
 	{
 		_model = model;
@@ -39,7 +44,8 @@ public abstract class Controller implements Observer
 		}
 	}
 	/**
-	 * Appelé par la vue pour vérifier qu'une entrée au clavier est bien numérique et de la bonne longueur
+	 * Méthode appelée par la vue pour vérifier qu'une entrée au clavier correspond au pattern et est de la bonne longueur
+	 * 
 	 * @param pattern String : Le pattern sous forme de regex
 	 * @param entry String : l'entrée au clavier
 	 * @return boolean : true si l'entrée est valide sinon false
@@ -53,5 +59,8 @@ public abstract class Controller implements Observer
 		
 		return Pattern.matches(pattern, entry);
 	}
+	/**
+	 * Méthode qui contient le code à exécuter
+	 */
 	public abstract void run();
 }

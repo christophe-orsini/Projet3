@@ -1,14 +1,13 @@
 package com.openclassrooms.escapegame.view;
 
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Scanner;
 import com.openclassrooms.escapegame.controller.*;
 import com.openclassrooms.escapegame.model.*;
 import com.openclassrooms.escapegame.utils.*;
 
 /**
- * Vue console du mode défenseur qui affiche les infos et demande les entrées
+ * Vue console du mode duel qui affiche les infos et demande les entrées
+ * 
  * @author C.ORSINI
  *
  */
@@ -16,13 +15,14 @@ public class DualView extends View
 {
 	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 	
-	private boolean _challenger;
+	private boolean _challenger; // flag pour verifier si l'on fait un queryEntry en mode challenger ou defender
 	
 	// ****************************************************** constructors
 	/**
 	 * Constructeur enregistrant la vue auprès du modèle
-	 * @param controller DualController : le controleur qui gère la vue
-	 * @param model DualModel : Le modèle correspondant
+	 * 
+	 * @param controller Controller : le controleur qui gère la vue
+	 * @param model Model : Le modèle correspondant
 	 */
 	public DualView(Controller controller, Model model)
 	{
@@ -30,9 +30,6 @@ public class DualView extends View
 	}
 	
 	// ******************************************************* methods
-	/**
-	 * Affiche les consignes à l'écran
-	 */
 	public void displayInstructions() {
 		// consignes
 		System.out.println("Nous allons jouer chacun à notre tour pour deviner une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) en " +
@@ -47,11 +44,6 @@ public class DualView extends View
 			System.out.println("Développement : solution = " + _modelState.getSearched());
 		}
 	}
-	/**
-	 * Demande la proposition
-	 * @param tryNumber
-	 * @return
-	 */
 	@Override
 	public String queryEntry(int tryNumber)
 	{
