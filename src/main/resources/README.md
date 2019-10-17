@@ -3,8 +3,9 @@
 ## Project N°3 Escape Game ONLINE
 
 * Développeur : Christophe ORSINI
-* Version : ${project.version}
-* Date : ${maven.build.timestamp}
+* Version     : ${project.version}
+* Date        : ${maven.build.timestamp}
+* Javadoc     : [ici](https://projet3.orsini-perso.fr) 
 
 ---
 ### Chargement
@@ -41,3 +42,6 @@ cela évitera de reconstruire l'application à chaque fois
 - Version 1.0.4  
      - Amélioration du pattern MVC  
      - Ajout de run.bat dans les ressources  
+- Version 1.0.5  
+     - Correction du run.bat
+     - Correction des commentaires javadoc  
