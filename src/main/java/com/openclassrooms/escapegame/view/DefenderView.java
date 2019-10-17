@@ -40,7 +40,7 @@ public class DefenderView extends View
 		}
 	}
 	@Override
-	public String queryEntry(int tryNumber)
+	public String queryEntry(EntryMode entryMode, int tryNumber)
 	{
 		System.out.printf("%35s %d : ", "Veuillez faire la proposition N°", tryNumber);
 		_entry = new Scanner(System.in);

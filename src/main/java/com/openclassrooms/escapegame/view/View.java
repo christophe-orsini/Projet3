@@ -56,10 +56,11 @@ public abstract class View implements Observer
 	/**
 	 * Demande une entrée en affichant le numéro de la tentative
 	 * 
+	 * @param entryMode EntryMode : type d'entrée attendue pour le mode défenseur ou attaquant
 	 * @param tryNumber int : Numéro de la tentative pour affichage
 	 * @return String : l'entrée
 	 */
-	public abstract String queryEntry(int tryNumber);
+	public abstract String queryEntry(EntryMode entryMode, int tryNumber);
 	/**
 	 * Affiche à l'écran le résultat d'un traitement par le modèle
 	 */
