@@ -47,4 +47,6 @@ cela évitera de reconstruire l'application à chaque fois
      - Correction des commentaires javadoc  
 - Version 1.0.6  
     - Correction bug boucle en mode dual  
-    - Correction ecriture des logs
+    - Correction ecriture des logs  
+- Version 1.1.0 - Version finale
+    - Correction inversion mode defender et challenger

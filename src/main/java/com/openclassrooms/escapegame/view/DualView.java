@@ -46,11 +46,11 @@ public class DualView extends View
 	@Override
 	public String queryEntry(EntryMode entryMode, int tryNumber)
 	{
-		if (entryMode == EntryMode.DEFENDER)
+		if (entryMode == EntryMode.CHALLENGER)
 		{
 			System.out.printf("%65s %d : ", "Veuillez faire votre proposition N°", tryNumber);	
 		}
-		if (entryMode == EntryMode.CHALLENGER)
+		if (entryMode == EntryMode.DEFENDER)
 		{
 			System.out.printf("%46s%d : %s%n","Voici ma proposition N°", tryNumber, _modelState.getProposed());
 			System.out.printf("%50s", "Veuillez m'indiquer mes erreurs avec + - = : ");

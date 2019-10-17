@@ -23,8 +23,8 @@ public class MainMenuView
 	{
 		// menu principal
 		System.out.println("\nMenu principal");
-		System.out.println("1 Jouer en mode Défenseur");
-		System.out.println("2 Jouer en mode Attaquant");
+		System.out.println("1 Jouer en mode Attaquant");
+		System.out.println("2 Jouer en mode Défenseur");
 		System.out.println("3 Jouer en mode Duel");
 		if (!firstime) // false = le joueur a deja joue une partie
 		{
