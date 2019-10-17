@@ -1,6 +1,6 @@
 @echo off
 cls
 if not exist target\classes\log4j.xml (
-	mvn clean compile
+	mvn clean package
 )
-java -jar target\gameplaystudio-1.0.4-SNAPSHOT.jar
+java -jar target\gameplaystudio-1.0.5.jar

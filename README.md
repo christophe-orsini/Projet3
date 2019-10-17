@@ -3,8 +3,9 @@
 ## Project N°3 Escape Game ONLINE
 
 * Développeur : Christophe ORSINI
-* Version : 1.0.4-SNAPSHOT
-* Date : 2019-10-17T12:57:43Z
+* Version     : 1.0.5
+* Date        : 2019-10-17T13:14:23Z
+* Javadoc     : [ici](https://projet3.orsini-perso.fr) 
 
 ---
 ### Chargement
@@ -17,7 +18,7 @@ Cloner le dépôt à cette adresse [https://github.com/christophe-orsini/Projet3
 Pour la première utilisation, après avoir cloné le dépôt, il faut :  
 1. Se placer dans le dossier du projet dans lequel vous venez de le cloner
 2. A la première utilisation, lancer la commande `mvn package`. Cette commande fabrique l'exécutable et démarre l'application
-3. Pour les autres utilisations, lancer la commande `java -jar target\gameplaystudio-1.0.4-SNAPSHOT.jar` ou la commande `run`  
+3. Pour les autres utilisations, lancer la commande `java -jar target\gameplaystudio-1.0.5.jar` ou la commande `run`  
 cela évitera de reconstruire l'application à chaque fois
 
 ---
@@ -41,3 +42,6 @@ cela évitera de reconstruire l'application à chaque fois
 - Version 1.0.4  
      - Amélioration du pattern MVC  
      - Ajout de run.bat dans les ressources  
+- Version 1.0.5  
+     - Correction du run.bat
+     - Correction des commentaires javadoc  
