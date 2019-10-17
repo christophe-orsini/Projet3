@@ -1,7 +1,5 @@
 package com.openclassrooms.escapegame.controller;
 
-import java.util.Observable;
-import java.util.regex.Pattern;
 import com.openclassrooms.escapegame.model.*;
 import com.openclassrooms.escapegame.utils.*;
 import com.openclassrooms.escapegame.view.*;
@@ -13,8 +11,6 @@ import com.openclassrooms.escapegame.view.*;
  */
 public class DefenderController extends Controller
 {
-	private boolean _win;
-	
 	// ***************************************************************** constructors
 	/**
 	 * Constructeur appelé avec un modèle déjà créé. Le constructeur crée la vue
@@ -24,11 +20,13 @@ public class DefenderController extends Controller
 	{
 		super(model);
 		_view = new DefenderView(this, _model);
+		_model.notifyState();
 	}
 	// *********************************************** methods
 	/**
 	 * execution de la boucle principale du jeu
 	 */
+	@Override
 	public void run()
 	{
 		// consignes
@@ -39,7 +37,7 @@ public class DefenderController extends Controller
 		while (!_win && nbTours <= AppConfig.getInstance().getNbTries())
 		{
 			String entry = _view.queryEntry(nbTours); // affiche la demande de proposition et attend la proposition
-			if (!checkEntry(entry)) // verifie que la proposition comprend des chiffres et est de la bonne longueur
+			if (!checkEntry("^[0-9]*$", entry)) // verifie que la proposition comprend des chiffres et est de la bonne longueur
 			{
 				_view.displayError("Veuillez entrer une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) SVP !");
 				continue;
@@ -64,25 +62,5 @@ public class DefenderController extends Controller
 			_view.displayLost();
 			AppLog.getLogger().info("Perdu aprés " + nbTours + " tentative(s)");
 		}
-	}
-	public void update(Observable o, Object arg) {
-		if (o instanceof DefenderModel)
-		{
-		_win = ((ModelState)arg).isWin();
-		}
-	}
-	/**
-	 * Appelé par la vue pour vérifier qu'une entrée au clavier est bien numérique et de la bonne longueur
-	 * @param entry String : l'entrée au clavier
-	 * @return boolean : true si l'entrée est valide sinon false
-	 */
-	@Override
-	protected boolean checkEntry(String entry) {
-		if (entry.length() != AppConfig.getInstance().getNbDigits())
-		{
-			return false;
-		}
-		
-		return Pattern.matches("^[0-9]*$", entry);
 	}
 }

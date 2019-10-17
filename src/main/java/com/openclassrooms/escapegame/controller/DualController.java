@@ -1,90 +1,85 @@
 package com.openclassrooms.escapegame.controller;
 
-import java.util.Observable;
-import java.util.Observer;
-import java.util.regex.Pattern;
-import com.openclassrooms.escapegame.model.DualModel;
-import com.openclassrooms.escapegame.utils.AppConfig;
-import com.openclassrooms.escapegame.utils.AppLog;
-import com.openclassrooms.escapegame.view.DualView;
+import com.openclassrooms.escapegame.model.*;
+import com.openclassrooms.escapegame.utils.*;
+import com.openclassrooms.escapegame.view.*;
 
 /**
  * Contrôleur du mode défenseur qui vérifie les entrées de la vue et transmet au modèle 
  * @author C.ORSINI
  *
  */
-public class DualController implements Observer
+public class DualController extends Controller
 {
-	protected DualModel _model;
-	protected DualView _view;
-	private boolean _win;
-	
 	// ***************************************************************** constructors
 	/**
 	 * Constructeur appelé avec un modèle déjà créé. Le constructeur crée la vue
 	 * @param model Model : le modèle auquel le controleur passe les commandes
 	 */
-	public DualController(DualModel model)
+	public DualController(Model model)
 	{
-		_model = model;
+		super(model);
 		_view = new DualView(this, _model);
-		_model.addObserver(this);
+		_model.notifyState();
 	}
 	// *********************************************** methods
 	/**
 	 * execution de la boucle principale du jeu
 	 */
+	@Override
 	public void run()
 	{
 		// consignes
-		_view.display();
+		_view.displayInstructions();
 		
 		// jeu
 		int nbTours = 1; // nombres de tours de jeu
 		while (!_win && nbTours <= AppConfig.getInstance().getNbTries())
 		{
-			String entry = _view.readProposed(nbTours); // affiche la demande de proposition et attend la proposition
-			if (!checkEntry(entry)) // verifie que la proposition comprend des chiffres et est de la bonne longueur
+			String entry = _view.queryEntry(nbTours); // affiche la proposition et attend la reponse
+			if (!checkEntry("^(-|\\+|=)*$", entry)) // verifie que la reponse comprend des symboles + - =  et est de la bonne longueur
 			{
-				_view.printMessage("Veuillez entrer une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) SVP !");
+				_view.displayError("Veuillez entrer une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) SVP !");
 				continue;
 			}
-			_model.verify(entry); // passe la main au modele pour verifier la combinaison
-			AppLog.getLogger().info("Essai N°" + nbTours + " combinaison proposée : " + _model.getSearchedCombinaison() +" -> réponse : " + _model.getResponse());
-			_view.printResponse();
+			AppLog.getLogger().info("Proposition N°" + nbTours + " : " + _model.getProposed()+ " -> Reponse : " + entry);
+			_model.manageEntry(entry); // passe la main au modele pour controler la reponse
+			
+			entry = _view.queryEntry(nbTours); // affiche la demande de proposition et attend la proposition
+			if (!checkEntry("^[0-9]*$", entry)) // verifie que la proposition comprend des chiffres et est de la bonne longueur
+			{
+				_view.displayError("Veuillez entrer une réponse à " + AppConfig.getInstance().getNbDigits() + " symbole(s) SVP !");
+				continue;
+			}
+			_model.manageEntry(entry); // passe la main au modele pour verifier la combinaison
+			AppLog.getLogger().info("Essai N°" + nbTours + " combinaison proposée : " + _model.getSearched() +" -> réponse : " + _model.getResult());
+			_view.displayResult();
+			
 			nbTours++;
 		}
 		nbTours--;
 		
-		// resultat
-		if (_win)
+		// resultat ordinateur
+		if (_modelState.isIWin()) // l'ordinateur a gagne
 		{
-			// affiche le message gagne
-			_view.displayWin(nbTours);
-			AppLog.getLogger().info("Gagné en " + nbTours + " tentative(s)");
-		} 
+			AppLog.getLogger().info("J'ai gagné en " + nbTours + " tentative(s)");
+		}
 		else
 		{
-			// affiche le message perdu
-			_view.displayLost();
-			AppLog.getLogger().info("Perdu aprés " + nbTours + " tentative(s)");
+			AppLog.getLogger().info("J'ai perdu aprés " + nbTours + " tentative(s)");
 		}
-	}
-	public void update(Observable o, Object arg) {
-		_win = _model.isWin();
-	}
-	/**
-	 * Appelé par la vue pour vérifier qu'une entrée au clavier est bien numérique et de la bonne longueur
-	 * @param entry String : l'entrée au clavier
-	 * @return boolean : true si l'entrée est valide sinon false
-	 */
-	private boolean checkEntry(String entry)
-	{
-		if (entry.length() != AppConfig.getInstance().getNbDigits())
+		// resultat joueur
+		if (_modelState.isYouWin()) // le joueur a gagne
 		{
-			return false;
+			AppLog.getLogger().info("Vous avez gagné en " + nbTours + " tentative(s)");
+		}
+		else
+		{
+			AppLog.getLogger().info("Vous avez perdu aprés " + nbTours + " tentative(s)");
 		}
 		
-		return Pattern.matches("^[0-9]*$", entry);
+		// affiche message
+		_view.displayWin(nbTours);
+		_view.displayLost();
 	}
 }

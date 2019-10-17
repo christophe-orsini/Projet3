@@ -29,22 +29,21 @@ public class MainController
 			case 1:
 				_model	= new DefenderModel(); // choix 1 creation du modele defenseur...
 				_controller = new DefenderController(_model); // ... et du controleur correspondant
-				_controller.run();
+				_controller.run(); // execution de la methode principale du controleur
 				break;
 			case 2:
-				//TODO a changer
-				ChallengerModel challengerModel	= new ChallengerModel();
-				ChallengerController challengerController = new ChallengerController(challengerModel);
-				challengerController.run();
+				_model	= new ChallengerModel();
+				_controller = new ChallengerController(_model);
+				_controller.run();
 				break;
 			case 3:
-				// TODO a changer
-				DualModel dualModel	= new DualModel();
-				DualController dualController = new DualController(dualModel);
-				dualController.run();
+				_model	= new DualModel();
+				_controller = new DualController(_model);
+				_controller.run();
 				break;
 			case 4:
 				if (_controller != null) {
+					_model.changeCombinaison();
 					_controller.run();
 				}
 			case 0:

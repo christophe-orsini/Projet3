@@ -1,7 +1,5 @@
 package com.openclassrooms.escapegame.view;
 
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Scanner;
 import com.openclassrooms.escapegame.controller.*;
 import com.openclassrooms.escapegame.model.*;
@@ -15,7 +13,6 @@ import com.openclassrooms.escapegame.utils.AppConfig;
 public class DefenderView extends View
 {
 	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
-	private ModelState _modelState;
 	
 	// ****************************************************** constructors
 	/**
@@ -57,15 +54,6 @@ public class DefenderView extends View
 		return proposition;
 	}
 	/**
-	 * Affiche un message a l'ecran
-	 * @param message String : le message
-	 */
-	@Override
-	public void displayError(String message)
-	{
-		System.out.println(message);
-	}
-	/**
 	 * Affiche la reponse de l'ordinateur
 	 */
 	@Override
@@ -89,12 +77,5 @@ public class DefenderView extends View
 	public void displayLost()
 	{
 		System.out.println("Dommage, vous n'avez pas trouvé la combinaison. La réponse était : " + _modelState.getSearched());
-	}
-	public void update(Observable o, Object arg)
-	{
-		if (o instanceof DefenderModel)
-		{
-		_modelState = (ModelState)arg;
-		}
 	}
 }

@@ -17,25 +17,19 @@ public class DefenderModel extends Model
 	{
 		AppLog.getLogger().info("Mode défenseur");
 		AppLog.getLogger().debug("Création de la combinaison aléatoire de longueur " + AppConfig.getInstance().getNbDigits());
-		_searched = new Combinaison(AppConfig.getInstance().getNbDigits());
-		AppLog.getLogger().info("Combinaison à trouver : " + _searched);
-		setChanged();
-		notifyObservers(new ModelState(_searched, _proposed, _result, _win));
+		changeCombinaison();
+		AppLog.getLogger().info("Combinaison à trouver : " + _modelState.getSearched());
 	}
 	// ******************************************************* methods
-	/**
-	 * Vérifie si la combinaison proposée correspond à la combianaison à trouver
-	 * @param proposition String : La combinaison proposée
-	 */
+	@Override
 	public void manageEntry(String proposition)
 	{
 		Combinaison propose = new Combinaison(proposition); // Transforme la proposition String en Combinaison ...
-		if (_searched.equals(propose)) // ... pour verifier l'egalite
+		if (_modelState.getSearched().equals(propose)) // ... pour verifier l'egalite
 		{
-			_win = true;
+			_modelState.setYouWin(true);
 		}
-		_result = _searched.compareTo(propose); // elabore la reponse
-		setChanged();
-		notifyObservers(new ModelState(_searched, _proposed, _result, _win));
+		_modelState.setResult(_modelState.getSearched().compareTo(propose)); // elabore la reponse
+		notifyState();
 	}
 }

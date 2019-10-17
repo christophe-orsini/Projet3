@@ -1,66 +1,49 @@
 package com.openclassrooms.escapegame.model;
 
-import java.util.Observable;
+import java.util.regex.Pattern;
 
-import com.openclassrooms.escapegame.utils.AppConfig;
-import com.openclassrooms.escapegame.utils.AppLog;
+import com.openclassrooms.escapegame.utils.*;
 
 /**
- * Modèle du mode défenseur qui gère le jeu en collaboration avec Combinaison
+ * Modèle du mode duel qui gère le jeu en collaboration avec Combinaison
  * @author C.ORSINI
  *
  */
-public class DualModel extends Observable
+public class DualModel extends Model
 {
-	private Combinaison _searchedCombinaison; // la combinaison recherchee
-	private Combinaison _proposedCombinaison; // la proposition de l'ordinateur
-	private boolean _iWin; // flag pour la victoire de l'ordinateur
-	private boolean _youWin; // flag pour la victoire du joueur
-	private String _response; // reponse de l'ordinateur sous forme de symboles + - =
-	
 	// ******************************************************* constructors
 	/**
-	 * Constructeur créant une combinaison à trouver
+	 * Constructeur créant une combinaison à trouver et une proposition
 	 */
 	public DualModel()
 	{
 		AppLog.getLogger().info("Mode duel");
 		AppLog.getLogger().debug("Création de la combinaison aléatoire de longueur " + AppConfig.getInstance().getNbDigits());
-		_searchedCombinaison = new Combinaison(AppConfig.getInstance().getNbDigits());
-		AppLog.getLogger().info("Combinaison à trouver : " + _searchedCombinaison);
-	}
-	// ******************************************************* getters/setters
-	/**
-	 * Retourne la combinaison sous forme de String
-	 * @return String : la combinaison
-	 */
-	public String getSearchedCombinaison() {
-		return _searchedCombinaison.toString();
-	}
-	@SuppressWarnings("javadoc")
-	public boolean isWin()
-	{
-		return _iWin;
-	}
-	@SuppressWarnings("javadoc")
-	public String getResponse()
-	{
-		return _response;
+		changeCombinaison();
+		AppLog.getLogger().info("Combinaison à trouver : " + _modelState.getSearched());
 	}
 	// ******************************************************* methods
-	/**
-	 * Vérifie si la combinaison proposée correspond à la combianaison à trouver
-	 * @param proposition String : La combinaison proposée
-	 */
-	public void verify(String proposition)
+	@Override
+	public void manageEntry(String proposition)
 	{
-		Combinaison propose = new Combinaison(proposition); // Transforme la proposition String en Combinaison ...
-		if (_searchedCombinaison.equals(propose)) // ... pour verifier l'egalite
+		if (Pattern.matches("^[0-9]*$", proposition)) // si la propositionest une combinaison
 		{
-			_iWin = true;
+			Combinaison propose = new Combinaison(proposition); // Transforme la proposition String en Combinaison ...
+			if (_modelState.getSearched().equals(propose)) // ... pour verifier l'egalite
+			{
+				_modelState.setYouWin(true);
+			}
+			_modelState.setResult(_modelState.getSearched().compareTo(propose)); // elabore la reponse
 		}
-		_response = _searchedCombinaison.compareTo(propose); // elabore la reponse
-		setChanged();
-		notifyObservers();
+		if (Pattern.matches("^(-|\\+|=)*$", proposition)) // si la proposition est une reponse sous forme de symboles + - =
+		{
+		// Verification de la reponse
+				if (_modelState.getProposed().isFound(proposition))
+				{
+					_modelState.setIWin(true);
+				} 
+				_modelState.setProposed(_modelState.getProposed().search(proposition)); // elabore une nouvelle combinaison proposee
+		}
+		notifyState();
 	}
 }
