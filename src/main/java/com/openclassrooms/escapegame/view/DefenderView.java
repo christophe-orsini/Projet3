@@ -3,7 +3,7 @@ package com.openclassrooms.escapegame.view;
 import java.util.Scanner;
 import com.openclassrooms.escapegame.controller.*;
 import com.openclassrooms.escapegame.model.*;
-import com.openclassrooms.escapegame.utils.AppConfig;
+import com.openclassrooms.escapegame.utils.*;
 
 /**
  * Vue console du mode défenseur qui affiche les infos et demande les entrées
@@ -31,35 +31,31 @@ public class DefenderView extends View
 	@Override
 	public void displayInstructions() {
 		// consignes
-		System.out.println("Vous devez deviner une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) en " + AppConfig.getInstance().getNbTries() + " tentative(s).");
+		System.out.println("Pensez à une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) et je vais la deviner en " + AppConfig.getInstance().getNbTries() + " tentative(s).");
 		
-		// mode developpement
-		if (AppConfig.getInstance().isDebug())
-		{
-			System.out.println("Développement : solution = " + _modelState.getSearched());
-		}
 	}
 	@Override
 	public String queryEntry(EntryMode entryMode, int tryNumber)
 	{
-		System.out.printf("%35s %d : ", "Veuillez faire la proposition N°", tryNumber);
+		System.out.printf("%46s%d : %s%n","Voici ma proposition N°", tryNumber, _modelState.getProposed());
+		System.out.printf("%50s", "Veuillez m'indiquer mes erreurs avec + - = : ");
 		_entry = new Scanner(System.in);
 		String proposition = _entry.nextLine();
 		return proposition;
 	}
 	@Override
-	public void displayResult()
-	{
-		System.out.printf("%37s : %s%n", "Resultat", _modelState.getResult());
-	}
-	@Override
 	public void displayWin(int nbTries)
 	{
-		System.out.println("BRAVO ! Vous avez gangé en " + nbTries + " tentative(s). La réponse est : " + _modelState.getSearched());
+		System.out.println("YOUPI ! J'ai gangé en " + nbTries + " tentative(s). La réponse est : " + _modelState.getProposed());
 	}
 	@Override
 	public void displayLost()
 	{
-		System.out.println("Dommage, vous n'avez pas trouvé la combinaison. La réponse était : " + _modelState.getSearched());
+		System.out.println("Dommage, je n'ai pas trouvé la combinaison.");
+	}
+	
+	@Override
+	public void displayResult() {
+		// rien a faire
 	}
 }
