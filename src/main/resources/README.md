@@ -17,7 +17,8 @@ Cloner le dépôt à cette adresse [https://github.com/christophe-orsini/Projet3
 Pour la première utilisation, après avoir cloné le dépôt, il faut :  
 1. Se placer dans le dossier du projet dans lequel vous venez de le cloner
 2. A la première utilisation, lancer la commande `mvn package`. Cette commande fabrique l'exécutable et démarre l'application
-3. Pour les autres utilisations, lancer la commande `java -jar target\gameplaystudio-${project.version}` cela évitera de reconstruire l'application à chaque fois
+3. Pour les autres utilisations, lancer la commande `java -jar target\gameplaystudio-${project.version}.jar` ou la commande `run`  
+cela évitera de reconstruire l'application à chaque fois
 
 ---
 #### Notes de versions
@@ -38,4 +39,5 @@ Pour la première utilisation, après avoir cloné le dépôt, il faut :
     - Nouvelle configuration du `README.md`  
     - Affichage de la solution en cas de perte ou de gain  
 - Version 1.0.4  
-     - Amélioration du pattern MVC    
+     - Amélioration du pattern MVC  
+     - Ajout de run.bat dans les ressources  
