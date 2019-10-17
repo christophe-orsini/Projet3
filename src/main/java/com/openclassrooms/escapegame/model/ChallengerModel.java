@@ -4,6 +4,7 @@ import com.openclassrooms.escapegame.utils.*;
 
 /**
  * Modèle du mode attaquant qui gère le jeu en collaboration avec Combinaison
+ * 
  * @author C.ORSINI
  *
  */

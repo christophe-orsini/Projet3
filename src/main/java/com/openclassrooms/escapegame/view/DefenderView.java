@@ -7,6 +7,7 @@ import com.openclassrooms.escapegame.utils.AppConfig;
 
 /**
  * Vue console du mode défenseur qui affiche les infos et demande les entrées
+ * 
  * @author C.ORSINI
  *
  */
@@ -17,8 +18,9 @@ public class DefenderView extends View
 	// ****************************************************** constructors
 	/**
 	 * Constructeur enregistrant la vue auprès du modèle
-	 * @param controller DefenderController : le controleur qui gère la vue
-	 * @param model DefenderModel : Le modèle correspondant
+	 * 
+	 * @param controller Controller : le controleur qui gère la vue
+	 * @param model Model : Le modèle correspondant
 	 */
 	public DefenderView(Controller controller, Model model)
 	{
@@ -26,9 +28,6 @@ public class DefenderView extends View
 	}
 	
 	// ******************************************************* methods
-	/**
-	 * Affiche les consignes à l'écran
-	 */
 	@Override
 	public void displayInstructions() {
 		// consignes
@@ -40,11 +39,6 @@ public class DefenderView extends View
 			System.out.println("Développement : solution = " + _modelState.getSearched());
 		}
 	}
-	/**
-	 * Demande la proposition
-	 * @param tryNumber int : Numero de la tentative en cours
-	 * @return String : L'entrée au clavier
-	 */
 	@Override
 	public String queryEntry(int tryNumber)
 	{
@@ -53,26 +47,16 @@ public class DefenderView extends View
 		String proposition = _entry.nextLine();
 		return proposition;
 	}
-	/**
-	 * Affiche la reponse de l'ordinateur
-	 */
 	@Override
 	public void displayResult()
 	{
 		System.out.printf("%37s : %s%n", "Resultat", _modelState.getResult());
 	}
-	/**
-	 * Affiche le message de victoire
-	 * @param nbTries int : nombre d'essais pour ganger
-	 */
 	@Override
 	public void displayWin(int nbTries)
 	{
 		System.out.println("BRAVO ! Vous avez gangé en " + nbTries + " tentative(s). La réponse est : " + _modelState.getSearched());
 	}
-	/**
-	 * Affiche le message de defaite
-	 */
 	@Override
 	public void displayLost()
 	{

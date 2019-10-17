@@ -11,10 +11,13 @@ public class MainMenuView
 {
 	private static Scanner _entry = new Scanner(System.in);
 	
+	// ***************************************************************** methods
 	/**
-	 * Affiche le menu principal et demande un choix
+	 * Affiche le menu principal et demande un choix <br />
+	 * Le parametre permet d'afficher ou de ne pas afficher l'option "Rejouer"
+	 * 
 	 * @param firstime boolean : true si c'est le premier appel sinon false
-	 * @return le numero choisi
+	 * @return int : le numero de l'option choisie
 	 */
 	public int display(boolean firstime)
 	{

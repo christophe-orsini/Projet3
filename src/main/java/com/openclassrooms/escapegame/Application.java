@@ -6,7 +6,9 @@ package com.openclassrooms.escapegame;
 import com.openclassrooms.escapegame.controller.*;
 
 /**
- * Classe principale du jeu EscapeGame
+ * Classe principale du jeu EscapeGame <br />
+ * C'est le point d'entrée de l'application
+ * 
  * @author C.ORSINI
  */
 public class Application

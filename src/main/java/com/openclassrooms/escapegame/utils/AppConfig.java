@@ -6,7 +6,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * Singleton qui recupere la configuration de l'application dans le fichier app.properties
+ * Singleton qui recupère la configuration de l'application dans le fichier app.properties
+ * 
  * @author C.ORSINI
  *
  */
@@ -22,6 +23,7 @@ public final class AppConfig {
 	private int _nbDigits;
 	private int _nbTries;
 
+	// **************************************************************** constructors
 	private AppConfig() 
 	{
 		Properties properties = new Properties();
@@ -74,6 +76,7 @@ public final class AppConfig {
 	// ************************************************** methods
 	/**
 	 * Obtenir l'unique instance de AppConfig
+	 * 
 	 * @return AppConfig : l'instance
 	 */
 	public final static AppConfig getInstance()

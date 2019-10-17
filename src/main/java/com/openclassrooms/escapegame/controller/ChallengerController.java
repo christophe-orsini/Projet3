@@ -13,7 +13,9 @@ public class ChallengerController extends Controller
 {
 	// ***************************************************************** constructors
 	/**
-	 * Constructeur appelé avec un modèle déjà créé. Le constructeur crée la vue et enregistre le controleur auprès du modèle
+	 * Constructeur appelé avec un modèle déjà créé.<br />
+	 * Le constructeur crée la vue et demande au modèle de notifier ses changements
+	 * 
 	 * @param model Model : le modèle auquel le controleur passe les commandes
 	 */
 	public ChallengerController(Model model)
@@ -25,9 +27,6 @@ public class ChallengerController extends Controller
 		_model.notifyState();
 	}
 	// *********************************************** methods
-	/**
-	 * execution de la boucle principale du jeu
-	 */
 	@Override
 	public void run()
 	{

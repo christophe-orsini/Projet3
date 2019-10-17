@@ -7,6 +7,7 @@ import com.openclassrooms.escapegame.utils.*;
 
 /**
  * Vue console du mode attaquant qui affiche les infos et demande les entrées
+ * 
  * @author C.ORSINI
  *
  */
@@ -17,8 +18,9 @@ public class ChallengerView extends View
 	// ****************************************************** constructors
 	/**
 	 * Constructeur enregistrant la vue auprès du modèle
-	 * @param controller ChallengerController : le controleur qui gère la vue
-	 * @param model ChallengerModel : Le modèle correspondant
+	 * 
+	 * @param controller Controller : le controleur qui gère la vue
+	 * @param model Model : Le modèle correspondant
 	 */
 	public ChallengerView(Controller controller, Model model)
 	{
@@ -26,20 +28,12 @@ public class ChallengerView extends View
 	}
 	
 	// ******************************************************* methods
-	/**
-	 * Affiche les consignes à l'écran
-	 */
 	@Override
 	public void displayInstructions() {
 		// consignes
 		System.out.println("Pensez à une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) et je vais la deviner en " + AppConfig.getInstance().getNbTries() + " tentative(s).");
 		
 	}
-	/**
-	 * Affiche une proposition et demande les corrections a apporter sous forme de symboles +, - ou =
-	 * @param tryNumber int : le numero de la tentative en cours
-	 * @return String : la reponse sous forme de symboles +, - ou =
-	 */
 	@Override
 	public String queryEntry(int tryNumber)
 	{
@@ -49,18 +43,11 @@ public class ChallengerView extends View
 		String proposition = _entry.nextLine();
 		return proposition;
 	}
-	/**
-	 * Affiche le message de victoire
-	 * @param nbTries int : nombre d'essais pour ganger
-	 */
 	@Override
 	public void displayWin(int nbTries)
 	{
 		System.out.println("YOUPI ! J'ai gangé en " + nbTries + " tentative(s). La réponse est : " + _modelState.getProposed());
 	}
-	/**
-	 * Affiche le message de defaite
-	 */
 	@Override
 	public void displayLost()
 	{

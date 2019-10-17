@@ -4,7 +4,7 @@ import com.openclassrooms.escapegame.model.*;
 import com.openclassrooms.escapegame.view.*;
 
 /**
- * Controleur principal du pattern MVC
+ * Controleur principal de l'application qui propose un choix de jeu
  */
 public class MainController
 {
@@ -13,7 +13,7 @@ public class MainController
 	
 	// ************************************************************************** methods
 	/**
-	 * Method principale d'execution du jeu permettant de choisir un mode de jeu
+	 * Methode principale d'execution du jeu permettant de choisir un mode de jeu
 	 */
 	public void run()
 	{
