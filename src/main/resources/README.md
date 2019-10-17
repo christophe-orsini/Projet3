@@ -45,3 +45,6 @@ cela évitera de reconstruire l'application à chaque fois
 - Version 1.0.5  
      - Correction du run.bat
      - Correction des commentaires javadoc  
+- Version 1.0.6  
+    - Correction bug boucle en mode dual  
+    - Correction ecriture des logs

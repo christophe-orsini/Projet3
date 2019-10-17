@@ -15,8 +15,6 @@ public class DualView extends View
 {
 	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 	
-	private boolean _challenger; // flag pour verifier si l'on fait un queryEntry en mode challenger ou defender
-	
 	// ****************************************************** constructors
 	/**
 	 * Constructeur enregistrant la vue auprès du modèle
@@ -30,6 +28,7 @@ public class DualView extends View
 	}
 	
 	// ******************************************************* methods
+	@Override
 	public void displayInstructions() {
 		// consignes
 		System.out.println("Nous allons jouer chacun à notre tour pour deviner une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) en " +
@@ -45,25 +44,21 @@ public class DualView extends View
 		}
 	}
 	@Override
-	public String queryEntry(int tryNumber)
+	public String queryEntry(EntryMode entryMode, int tryNumber)
 	{
-		if (_challenger)
+		if (entryMode == EntryMode.DEFENDER)
 		{
-			System.out.printf("%65s %d : ", "Veuillez faire votre proposition N°", tryNumber);
-			_entry = new Scanner(System.in);
-			String proposition = _entry.nextLine();
-			_challenger = !_challenger;
-			return proposition;
+			System.out.printf("%65s %d : ", "Veuillez faire votre proposition N°", tryNumber);	
 		}
-		else
+		if (entryMode == EntryMode.CHALLENGER)
 		{
 			System.out.printf("%46s%d : %s%n","Voici ma proposition N°", tryNumber, _modelState.getProposed());
 			System.out.printf("%50s", "Veuillez m'indiquer mes erreurs avec + - = : ");
-			_entry = new Scanner(System.in);
-			String proposition = _entry.nextLine();
-			_challenger = !_challenger;
-			return proposition;
 		}
+		_entry = new Scanner(System.in);
+		String proposition = _entry.nextLine();
+		
+		return proposition;
 	}
 	@Override
 	public void displayResult()

@@ -37,13 +37,13 @@ public class ChallengerController extends Controller
 		int nbTours = 1; // nombres de tours de jeu
 		while (!_win && nbTours <= AppConfig.getInstance().getNbTries())
 		{
-			String entry = _view.queryEntry(nbTours); // affiche la proposition et attend la reponse
+			String entry = _view.queryEntry(null, nbTours); // affiche la proposition et attend la reponse
 			if (!checkEntry("^(-|\\+|=)*$", entry)) // verifie que la reponse comprend des symboles + - =  et est de la bonne longueur
 			{
 				_view.displayError("Veuillez entrer une réponse à " + AppConfig.getInstance().getNbDigits() + " symbole(s) SVP !");
 				continue;
 			}
-			AppLog.getLogger().info("Proposition N°" + nbTours + " : " + _model.getProposed()+ " -> Reponse : " + entry);
+			AppLog.getLogger().info("Proposition N°" + nbTours + " : " + _modelState.getProposed()+ " -> Reponse : " + entry);
 			_model.manageEntry(entry); // passe la main au modele pour controler la reponse
 			nbTours++;
 		}

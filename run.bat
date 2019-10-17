@@ -3,4 +3,4 @@ cls
 if not exist target\classes\log4j.xml (
 	mvn clean package
 )
-java -jar target\gameplaystudio-1.0.5.jar
+java -jar target\gameplaystudio-1.0.6.jar
