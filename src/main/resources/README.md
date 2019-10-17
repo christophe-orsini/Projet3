@@ -36,5 +36,6 @@ Pour la première utilisation, après avoir cloné le dépôt, il faut :
     - Ajout de la version et ajout de constantes dans `AppConfig`  
     - Correction affichage message developpeur dans `DefenderMode`  
     - Nouvelle configuration du `README.md`  
-    - Affichage de la solution en cas de perte aou de gain  
-    
+    - Affichage de la solution en cas de perte ou de gain  
+- Version 1.0.4  
+     - Amélioration du pattern MVC    

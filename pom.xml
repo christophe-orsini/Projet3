@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<!--  *********************************************************************************************** -->
-	<!-- Projet-->
-	<!--  *********************************************************************************************** -->
+	<!-- *********************************************************************************************** -->
+	<!-- Projet -->
+	<!-- *********************************************************************************************** -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.openclassrooms</groupId>
 	<artifactId>gameplaystudio</artifactId>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.4-SNAPSHOT</version>
 	<name>EscapeGame</name>
 	<description>Jeu Escape Game en mode console</description>
 	<url>https://github.com/christophe-orsini/Projet3</url>
@@ -19,7 +19,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
-	<!--  *********************************************** Modules ************************************** -->
+		<!-- *********************************************** Modules ************************************** -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -32,9 +32,9 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<!--  ************************************************** Profiles ********************************* -->
+	<!-- ************************************************** Profiles ********************************* -->
 	<profiles>
-		<!--  Developpement -->
+		<!-- Developpement -->
 		<profile>
 			<id>dev</id>
 			<build>
@@ -49,7 +49,7 @@
 				<mode.developpeur>true</mode.developpeur>
 			</properties>
 		</profile>
-		<!--  Production -->
+		<!-- Production -->
 		<profile>
 			<id>prod</id>
 			<build>
@@ -69,19 +69,19 @@
 			</properties>
 		</profile>
 	</profiles>
-	<!--  ************************************************** Build ************************************ -->
+	<!-- ************************************************** Build ************************************ -->
 	<build>
-	<!-- *************************************************** Plugins ********************************** -->
+		<!-- *************************************************** Plugins ********************************** -->
 		<plugins>
 			<plugin>
-			<!-- exec -->
+				<!-- exec -->
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.6.0</version>
 				<executions>
 					<execution>
-					<id>my-execution</id>
-					<phase>package</phase>
+						<id>my-execution</id>
+						<phase>package</phase>
 						<goals>
 							<goal>java</goal>
 						</goals>
@@ -91,47 +91,47 @@
 					<mainClass>com.openclassrooms.escapegame.Application</mainClass>
 				</configuration>
 			</plugin>
-			<!--  jar -->
+			<!-- jar -->
 			<plugin>
-		    <groupId>org.apache.maven.plugins</groupId>
-		    <artifactId>maven-jar-plugin</artifactId>
-		    <version>3.1.2</version>
-		    <configuration>
-		      <archive>
-		        <manifest>
-		        	<mainClass>com.openclassrooms.escapegame.Application</mainClass>
-		        </manifest>
-		      </archive>
-		    </configuration>
-		    </plugin>
-		    <!--  resources -->
-		    <plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
-			  <artifactId>maven-resources-plugin</artifactId>
-			  <version>3.1.0</version>
-			  <executions>
-			    <execution>
-			      <id>readme-md</id>
-			      <phase>package</phase>
-			      <goals>
-			        <goal>copy-resources</goal>
-			      </goals>
-			      <configuration>
-			        <outputDirectory>${project.basedir}</outputDirectory>
-			        <overwrite>true</overwrite>
-			        <resources>                                        
-			          <resource>
-			            <directory>${project.basedir}/src/main/resources</directory>
-			            <includes>
-			              <include>README.md</include>
-			            </includes>
-			            <filtering>true</filtering>
-			          </resource>
-			        </resources>
-			        <encoding>UTF-8</encoding>
-			      </configuration>            
-			    </execution>
-			  </executions>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.openclassrooms.escapegame.Application</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<!-- resources -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>readme-md</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}</outputDirectory>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/src/main/resources</directory>
+									<includes>
+										<include>README.md</include>
+									</includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+							<encoding>UTF-8</encoding>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

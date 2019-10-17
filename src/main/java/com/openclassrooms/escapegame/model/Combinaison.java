@@ -4,13 +4,11 @@
 package com.openclassrooms.escapegame.model;
 
 import java.util.Random;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Classe de gestion des combinaisons
  * @author C.ORSINI
- * @version 0.0.0
  */
 public class Combinaison
 {
@@ -20,7 +18,6 @@ public class Combinaison
 	 * Par defaut {@value}
 	 */
 	public static final int MAX_DIGITS = 10; // TODO a supprimer
-	
 	
 	// Nombre de chiffres du code
 	protected int nbDigits;
@@ -42,7 +39,7 @@ public class Combinaison
 	{
 		this.nbDigits = nbDigits;
 		
-		// controle depassement de nbDigits
+		// controle le depassement de nbDigits
 		if (nbDigits < 1 )
 		{
 			this.nbDigits = 1;
@@ -87,10 +84,12 @@ public class Combinaison
 	}
 	
 	// ********************************************************** getters
+	@SuppressWarnings("javadoc")
 	public int getNbDigits()
 	{
 		return nbDigits;
 	}
+	@SuppressWarnings("javadoc")
 	public String getCombinaison()
 	{
 		return combinaison;
@@ -266,31 +265,5 @@ public class Combinaison
 	private int mean(char min, char max)
 	{
 		return (Character.getNumericValue(max) - Character.getNumericValue(min)) / 2;
-	}
-	/**
-	 * Verifie que le nombre est bien de la bonne longueur et ne comporte que des chiffres
-	 * @param proposition String : la proposition a verifier
-	 * @return boolean : true si OK sinon false
-	 */
-	public boolean checkDigits(String proposition)
-	{
-		if (proposition.length() != nbDigits)
-		{
-			return false;
-		}
-		return Pattern.matches("^[0-9]*$", proposition);
-	}
-	/**
-	 * Verifie que le symbole est bien de la bonne longueur et ne comporte que des symboles + - ou =
-	 * @param proposition String : la reponse a verifier
-	 * @return boolean : true si OK sinon false
-	 */
-	public boolean checkSymbols(String reponse)
-	{
-		if (reponse.length() != nbDigits)
-		{
-			return false;
-		}
-		return Pattern.matches("^(-|\\+|=)*$", reponse);
 	}
 }
