@@ -12,25 +12,24 @@ public class DefenderModel extends Model
 {
 	// ******************************************************* constructors
 	/**
-	 * Constructeur créant une combinaison à trouver
+	 * Constructeur créant une proposition de combinaison
 	 */
 	public DefenderModel()
 	{
 		AppLog.getLogger().info("Mode défenseur");
 		AppLog.getLogger().debug("Création de la combinaison aléatoire de longueur " + AppConfig.getInstance().getNbDigits());
 		changeCombinaison();
-		AppLog.getLogger().info("Combinaison à trouver : " + _modelState.getSearched());
 	}
 	// ******************************************************* methods
 	@Override
-	public void manageEntry(String proposition)
+	public void manageEntry(String response)
 	{
-		Combinaison propose = new Combinaison(proposition); // Transforme la proposition String en Combinaison ...
-		if (_modelState.getSearched().equals(propose)) // ... pour verifier l'egalite
+		// Verification de la reponse
+		if (_modelState.getProposed().isFound(response))
 		{
-			_modelState.setYouWin(true);
-		}
-		_modelState.setResult(_modelState.getSearched().compareTo(propose)); // elabore la reponse
+			_modelState.setIWin(true);
+		} 
+		_modelState.setProposed(_modelState.getProposed().search(response)); // elabore une nouvelle combinaison proposee
 		notifyState();
 	}
 }

@@ -22,6 +22,8 @@ public class DefenderController extends Controller
 	{
 		super(model);
 		_view = new DefenderView(this, _model);
+		
+		// creation de la premiere proposition
 		_model.notifyState();
 	}
 	// *********************************************** methods
@@ -35,15 +37,14 @@ public class DefenderController extends Controller
 		int nbTours = 1; // nombres de tours de jeu
 		while (!_win && nbTours <= AppConfig.getInstance().getNbTries())
 		{
-			String entry = _view.queryEntry(null, nbTours); // affiche la demande de proposition et attend la proposition
-			if (!checkEntry("^[0-9]*$", entry)) // verifie que la proposition comprend des chiffres et est de la bonne longueur
+			String entry = _view.queryEntry(null, nbTours); // affiche la proposition et attend la reponse
+			if (!checkEntry("^(-|\\+|=)*$", entry)) // verifie que la reponse comprend des symboles + - =  et est de la bonne longueur
 			{
-				_view.displayError("Veuillez entrer une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) SVP !");
+				_view.displayError("Veuillez entrer une réponse à " + AppConfig.getInstance().getNbDigits() + " symbole(s) SVP !");
 				continue;
 			}
-			_model.manageEntry(entry); // passe la main au modele pour verifier la combinaison
-			AppLog.getLogger().info("Essai N°" + nbTours + " combinaison proposée : " + entry +" -> réponse : " + _modelState.getResult());
-			_view.displayResult();
+			AppLog.getLogger().info("Proposition N°" + nbTours + " : " + _modelState.getProposed()+ " -> Reponse : " + entry);
+			_model.manageEntry(entry); // passe la main au modele pour controler la reponse
 			nbTours++;
 		}
 		nbTours--;

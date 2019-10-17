@@ -38,7 +38,7 @@ public class DualController extends Controller
 			String entry; // pour l'entree au clavier
 			boolean check = true;
 			do {
-				entry = _view.queryEntry(EntryMode.CHALLENGER, nbTours); // affiche la proposition et attend la reponse
+				entry = _view.queryEntry(EntryMode.DEFENDER, nbTours); // affiche la proposition et attend la reponse
 				if (!checkEntry("^(-|\\+|=)*$", entry)) // verifie que la reponse comprend des symboles + - =  et est de la bonne longueur
 				{
 					_view.displayError("Veuillez entrer une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) SVP !");
@@ -52,7 +52,7 @@ public class DualController extends Controller
 			
 			check = true;
 			do {
-				entry = _view.queryEntry(EntryMode.DEFENDER, nbTours); // affiche la demande de proposition et attend la proposition
+				entry = _view.queryEntry(EntryMode.CHALLENGER, nbTours); // affiche la demande de proposition et attend la proposition
 				if (!checkEntry("^[0-9]*$", entry)) // verifie que la proposition comprend des chiffres et est de la bonne longueur
 				{
 					_view.displayError("Veuillez entrer une réponse à " + AppConfig.getInstance().getNbDigits() + " symbole(s) SVP !");

@@ -27,13 +27,13 @@ public class MainController
 			switch (choice)
 			{
 			case 1:
-				_model	= new DefenderModel(); // choix 1 creation du modele defenseur...
-				_controller = new DefenderController(_model); // ... et du controleur correspondant
+				_model	= new ChallengerModel(); // choix 1 creation du modele attaquant...
+				_controller = new ChallengerController(_model); // ... et du controleur correspondant
 				_controller.run(); // execution de la methode principale du controleur
 				break;
 			case 2:
-				_model	= new ChallengerModel();
-				_controller = new ChallengerController(_model);
+				_model	= new DefenderModel();
+				_controller = new DefenderController(_model);
 				_controller.run();
 				break;
 			case 3:

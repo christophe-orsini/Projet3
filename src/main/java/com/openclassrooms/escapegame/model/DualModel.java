@@ -27,7 +27,7 @@ public class DualModel extends Model
 	@Override
 	public void manageEntry(String proposition)
 	{
-		if (Pattern.matches("^[0-9]*$", proposition)) // si la propositionest une combinaison
+		if (Pattern.matches("^[0-9]*$", proposition)) // si la proposition est une combinaison
 		{
 			Combinaison propose = new Combinaison(proposition); // Transforme la proposition String en Combinaison ...
 			if (_modelState.getSearched().equals(propose)) // ... pour verifier l'egalite
