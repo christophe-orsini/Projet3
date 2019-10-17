@@ -35,23 +35,34 @@ public class DualController extends Controller
 		int nbTours = 1; // nombres de tours de jeu
 		while (!_win && nbTours <= AppConfig.getInstance().getNbTries())
 		{
-			String entry = _view.queryEntry(nbTours); // affiche la proposition et attend la reponse
-			if (!checkEntry("^(-|\\+|=)*$", entry)) // verifie que la reponse comprend des symboles + - =  et est de la bonne longueur
-			{
-				_view.displayError("Veuillez entrer une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) SVP !");
-				continue;
-			}
-			AppLog.getLogger().info("Proposition N°" + nbTours + " : " + _model.getProposed()+ " -> Reponse : " + entry);
+			String entry; // pour l'entree au clavier
+			boolean check = true;
+			do {
+				entry = _view.queryEntry(EntryMode.CHALLENGER, nbTours); // affiche la proposition et attend la reponse
+				if (!checkEntry("^(-|\\+|=)*$", entry)) // verifie que la reponse comprend des symboles + - =  et est de la bonne longueur
+				{
+					_view.displayError("Veuillez entrer une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) SVP !");
+					continue;
+				}
+				check = false;
+			} while (check);
+			
+			AppLog.getLogger().info("Proposition N°" + nbTours + " : " + _modelState.getProposed()+ " -> Reponse : " + entry);
 			_model.manageEntry(entry); // passe la main au modele pour controler la reponse
 			
-			entry = _view.queryEntry(nbTours); // affiche la demande de proposition et attend la proposition
-			if (!checkEntry("^[0-9]*$", entry)) // verifie que la proposition comprend des chiffres et est de la bonne longueur
-			{
-				_view.displayError("Veuillez entrer une réponse à " + AppConfig.getInstance().getNbDigits() + " symbole(s) SVP !");
-				continue;
-			}
+			check = true;
+			do {
+				entry = _view.queryEntry(EntryMode.DEFENDER, nbTours); // affiche la demande de proposition et attend la proposition
+				if (!checkEntry("^[0-9]*$", entry)) // verifie que la proposition comprend des chiffres et est de la bonne longueur
+				{
+					_view.displayError("Veuillez entrer une réponse à " + AppConfig.getInstance().getNbDigits() + " symbole(s) SVP !");
+					continue;
+				}
+				check = false;
+			} while (check);
+			
 			_model.manageEntry(entry); // passe la main au modele pour verifier la combinaison
-			AppLog.getLogger().info("Essai N°" + nbTours + " combinaison proposée : " + _model.getSearched() +" -> réponse : " + _model.getResult());
+			AppLog.getLogger().info("Essai N°" + nbTours + " combinaison proposée : " + entry +" -> réponse : " + _modelState.getResult());
 			_view.displayResult();
 			
 			nbTours++;

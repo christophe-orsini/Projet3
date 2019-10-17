@@ -35,7 +35,7 @@ public class ChallengerView extends View
 		
 	}
 	@Override
-	public String queryEntry(int tryNumber)
+	public String queryEntry(EntryMode entryMode, int tryNumber)
 	{
 		System.out.printf("%46s%d : %s%n","Voici ma proposition N°", tryNumber, _modelState.getProposed());
 		System.out.printf("%50s", "Veuillez m'indiquer mes erreurs avec + - = : ");
