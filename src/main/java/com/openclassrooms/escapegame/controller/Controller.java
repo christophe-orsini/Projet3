@@ -3,7 +3,6 @@ package com.openclassrooms.escapegame.controller;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.regex.Pattern;
-
 import com.openclassrooms.escapegame.model.Model;
 import com.openclassrooms.escapegame.model.ModelState;
 import com.openclassrooms.escapegame.utils.AppConfig;
