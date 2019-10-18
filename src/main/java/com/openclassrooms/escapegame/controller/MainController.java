@@ -8,51 +8,53 @@ import com.openclassrooms.escapegame.view.*;
  */
 public class MainController
 {
-	private Model _model;
-	private Controller _controller;
-	
 	// ************************************************************************** methods
 	/**
 	 * Methode principale d'execution du jeu permettant de choisir un mode de jeu
 	 */
 	public void run()
 	{
+		Model model = null;
+		Controller controller = null;
+		boolean flag = true; // flag true pour afficher l'option rejouer
+		
 		// affichage du menu principal
 		MainMenuView view = new MainMenuView();
-		int choice = view.display(true); // true pour le premier appel sans affichage de l'option rejouer
+		int choice = -1;
 		
 		// boucle principale du jeu
 		while (choice != 0)
 		{
+			choice = view.display(flag); // true pour le premier appel sans affichage de l'option rejouer
 			switch (choice)
 			{
 			case 1:
-				_model	= new ChallengerModel(); // choix 1 creation du modele attaquant...
-				_controller = new ChallengerController(_model); // ... et du controleur correspondant
-				_controller.run(); // execution de la methode principale du controleur
+				model	= new ChallengerModel(); // choix 1 creation du modele attaquant...
+				controller = new ChallengerController(model); // ... et du controleur correspondant
+				controller.run(); // execution de la methode principale du controleur
 				break;
 			case 2:
-				_model	= new DefenderModel();
-				_controller = new DefenderController(_model);
-				_controller.run();
+				model	= new DefenderModel();
+				controller = new DefenderController(model);
+				controller.run();
 				break;
 			case 3:
-				_model	= new DualModel();
-				_controller = new DualController(_model);
-				_controller.run();
+				model	= new DualModel();
+				controller = new DualController(model);
+				controller.run();
 				break;
 			case 4:
-				if (_controller != null) {
-					_model.changeCombinaison();
-					_controller.run();
+				if (controller != null) {
+					model.changeCombinaison();
+					controller.run();
 				}
 			case 0:
 				break;
 			default:
-				ErrorView message = new ErrorView("Choix invalide !"); // vue en cas d'erreur de choix
-				message.display();
+				view.displayMessage("Choix invalide !"); // vue en cas d'erreur de choix
+				continue;
 			}
-			choice = view.display(false); // false pour afficher l'option rejouer
+			flag = false; // pour les autres appels a la vue avec l'option rejouer
 		}
 	}
 }

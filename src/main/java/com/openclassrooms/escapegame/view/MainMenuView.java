@@ -1,5 +1,6 @@
 package com.openclassrooms.escapegame.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -32,8 +33,20 @@ public class MainMenuView
 		}
 		System.out.println("0 Quitter le jeu");
 		System.out.print("Faire un choix :");
-		int choice = _entry.nextInt();
+		
+		int choice = 0;
+		try {
+			choice = _entry.nextInt();
+		} catch (InputMismatchException e) {}
 			
 		return choice;
+	}
+	/**
+	 * Affiche une message à l'écran
+	 * @param message
+	 */
+	public void displayMessage(String message)
+	{
+		System.out.println(message);
 	}
 }
