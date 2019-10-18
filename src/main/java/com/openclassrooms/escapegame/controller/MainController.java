@@ -39,8 +39,8 @@ public class MainController
 				controller.run();
 				break;
 			case 3:
-				model	= new DualModel();
-				controller = new DualController(model);
+				model	= new FightModel();
+				controller = new FightController(model);
 				controller.run();
 				break;
 			case 4:
