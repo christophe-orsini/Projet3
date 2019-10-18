@@ -9,7 +9,7 @@ import com.openclassrooms.escapegame.view.*;
  * @author C.ORSINI
  *
  */
-public class DualController extends Controller
+public class FightController extends Controller
 {
 	// ***************************************************************** constructors
 	/**
@@ -18,10 +18,10 @@ public class DualController extends Controller
 	 * 
 	 * @param model Model : le modèle auquel le controleur passe les commandes
 	 */
-	public DualController(Model model)
+	public FightController(Model model)
 	{
 		super(model);
-		_view = new DualView(this, _model);
+		_view = new FightView(this, _model);
 		_model.notifyState();
 	}
 	// *********************************************** methods

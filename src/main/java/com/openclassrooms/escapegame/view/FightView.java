@@ -11,7 +11,7 @@ import com.openclassrooms.escapegame.utils.*;
  * @author C.ORSINI
  *
  */
-public class DualView extends View
+public class FightView extends View
 {
 	private static Scanner _entry = new Scanner(System.in); // pour lecture clavier
 	
@@ -22,7 +22,7 @@ public class DualView extends View
 	 * @param controller Controller : le controleur qui gère la vue
 	 * @param model Model : Le modèle correspondant
 	 */
-	public DualView(Controller controller, Model model)
+	public FightView(Controller controller, Model model)
 	{
 		super(controller, model);
 	}

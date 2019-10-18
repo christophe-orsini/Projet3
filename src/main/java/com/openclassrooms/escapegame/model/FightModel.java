@@ -10,13 +10,13 @@ import com.openclassrooms.escapegame.utils.*;
  * @author C.ORSINI
  *
  */
-public class DualModel extends Model
+public class FightModel extends Model
 {
 	// ******************************************************* constructors
 	/**
 	 * Constructeur créant une combinaison à trouver et une proposition
 	 */
-	public DualModel()
+	public FightModel()
 	{
 		AppLog.getLogger().info("Mode duel");
 		AppLog.getLogger().debug("Création de la combinaison aléatoire de longueur " + AppConfig.getInstance().getNbDigits());
