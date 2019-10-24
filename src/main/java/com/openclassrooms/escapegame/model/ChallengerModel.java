@@ -19,7 +19,7 @@ public class ChallengerModel extends Model
 		AppLog.getLogger().info("Mode attaquant");
 		AppLog.getLogger().debug("Création de la combinaison aléatoire de longueur " + AppConfig.getInstance().getNbDigits());
 		changeCombinaison();
-		AppLog.getLogger().info("Combinaison à trouver : " + _modelState.getSearched());
+		
 	}
 	// ******************************************************* methods
 	@Override

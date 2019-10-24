@@ -56,3 +56,5 @@ Vous devez avoir **java** version **${java.version}** ou supérieur et **maven**
     - Incorporation des dépendances dans le jar
     - Refonte du `README.md`
     - Correction du `run.bat`
+- Version 1.1.3
+     - Correction bug log combinaison ne se fait pas lorsque l'on rejoue

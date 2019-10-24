@@ -4,6 +4,5 @@
 /.settings
 .project
 .classpath
-/exceptions.html
 /callCmd.bat
 /dependency-reduced-pom.xml
