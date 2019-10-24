@@ -3,7 +3,7 @@
 ## Project N°3 Escape Game ONLINE
 
 * Développeur : Christophe ORSINI
-* Version     : 1.1.2
+* Version     : 1.1.3
 * Javadoc     : [ici](https://projet3.orsini-perso.fr) 
 
 ---
@@ -56,3 +56,5 @@ Vous devez avoir **java** version **1.8.0_222** ou supérieur et **maven** versi
     - Incorporation des dépendances dans le jar
     - Refonte du `README.md`
     - Correction du `run.bat`
+- Version 1.1.3
+     - Correction bug log combinaison ne se fait pas lorsque l'on rejoue
