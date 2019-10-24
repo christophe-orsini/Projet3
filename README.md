@@ -3,23 +3,21 @@
 ## Project N°3 Escape Game ONLINE
 
 * Développeur : Christophe ORSINI
-* Version     : 1.1.1
-* Date        : 2019-10-18T12:24:17Z
+* Version     : 1.1.2
 * Javadoc     : [ici](https://projet3.orsini-perso.fr) 
 
 ---
 ### Chargement
-Cloner le dépôt à cette adresse [https://github.com/christophe-orsini/Projet3.git](https://github.com/christophe-orsini/Projet3.git)
+Clonez le dépôt à cette adresse [https://github.com/christophe-orsini/Projet3.git](https://github.com/christophe-orsini/Projet3.git)
 
 ### Prérequis
-> Vous devez avoir **java 8 (1.8.0.222)** ou supérieur et **maven 3.6.2** ou supérieur sur votre ordinateur pour pouvoir exécuter cette application
+Vous devez avoir **java** version **1.8.0_222** ou supérieur et **maven** version **3.6.2** ou supérieur sur votre ordinateur pour pouvoir exécuter cette application
 
 ### Exécution
-Pour la première utilisation, après avoir cloné le dépôt, il faut :  
-1. Se placer dans le dossier du projet dans lequel vous venez de le cloner
-2. A la première utilisation, lancer la commande `mvn package`. Cette commande fabrique l'exécutable et démarre l'application
-3. Pour les autres utilisations, lancer la commande `java -jar target\gameplaystudio-1.1.1.jar` ou la commande `run`  
-cela évitera de reconstruire l'application à chaque fois
+1. Placez vous dans le dossier où vous avez cloné le dépôt  
+2. Tapez la commande `run` si vous êtes en mode console ou cliquez sur `run.bat`  
+
+> Pour la première utilisation, cette commande installe l'application et vous devez la relancer pour jouer  
 
 ---
 #### Notes de versions
@@ -51,6 +49,10 @@ cela évitera de reconstruire l'application à chaque fois
 - Version 1.1.0 - Version stable
     - Correction inversion mode defender et challenger  
 - Version 1.1.1  
-     - Refactorin de MainController et MainMenuView
+     - Refactoring de MainController et MainMenuView
      - Suppression de ErrorView
-     - Changement de nom Dual en Fight
+     - Changement de nom Dual en Fight  
+- Version 1.1.2
+    - Incorporation des dépendances dans le jar
+    - Refonte du `README.md`
+    - Correction du `run.bat`
