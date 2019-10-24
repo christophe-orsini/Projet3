@@ -21,7 +21,7 @@ public class FightController extends Controller
 	public FightController(Model model)
 	{
 		super(model);
-		_view = new FightView(this, _model);
+		_view = new FightView(this, _model, new Console());
 		_model.notifyState();
 	}
 	// *********************************************** methods

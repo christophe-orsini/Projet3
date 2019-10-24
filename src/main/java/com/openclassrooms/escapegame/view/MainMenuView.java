@@ -3,6 +3,8 @@ package com.openclassrooms.escapegame.view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import com.openclassrooms.escapegame.utils.IConsole;
+
 /**
  * Vue du menu principal de l'application
  * @author C.ORSINI
@@ -11,7 +13,17 @@ import java.util.Scanner;
 public class MainMenuView
 {
 	private static Scanner _entry = new Scanner(System.in);
+	private IConsole _console;
 	
+	// ***************************************************************** constructors
+	/**
+	 * Constructeur prenant une cosole en argument
+	 * @param console IConsole : La console pour les affuichages
+	 */
+	public MainMenuView(IConsole console)
+	{
+		_console = console;
+	}
 	// ***************************************************************** methods
 	/**
 	 * Affiche le menu principal et demande un choix <br />
@@ -23,16 +35,16 @@ public class MainMenuView
 	public int display(boolean firstime)
 	{
 		// menu principal
-		System.out.println("\nMenu principal");
-		System.out.println("1 Jouer en mode Attaquant");
-		System.out.println("2 Jouer en mode Défenseur");
-		System.out.println("3 Jouer en mode Duel");
+		_console.displayLine("\nMenu principal");
+		_console.displayLine("1 Jouer en mode Attaquant");
+		_console.displayLine("2 Jouer en mode Défenseur");
+		_console.displayLine("3 Jouer en mode Duel");
 		if (!firstime) // false = le joueur a deja joue une partie
 		{
-			System.out.println("4 Rejouer la dernière partie");
+			_console.displayLine("4 Rejouer la dernière partie");
 		}
-		System.out.println("0 Quitter le jeu");
-		System.out.print("Faire un choix :");
+		_console.displayLine("0 Quitter le jeu");
+		_console.display("Faire un choix : ");
 		
 		int choice = 0;
 		try {
@@ -47,6 +59,6 @@ public class MainMenuView
 	 */
 	public void displayMessage(String message)
 	{
-		System.out.println(message);
+		_console.displayLine(message);
 	}
 }

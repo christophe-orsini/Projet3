@@ -1,6 +1,7 @@
 package com.openclassrooms.escapegame.controller;
 
 import com.openclassrooms.escapegame.model.*;
+import com.openclassrooms.escapegame.utils.Console;
 import com.openclassrooms.escapegame.view.*;
 
 /**
@@ -19,7 +20,7 @@ public class MainController
 		boolean flag = true; // flag true pour afficher l'option rejouer
 		
 		// affichage du menu principal
-		MainMenuView view = new MainMenuView();
+		MainMenuView view = new MainMenuView(new Console());
 		int choice = -1;
 		
 		// boucle principale du jeu

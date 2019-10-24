@@ -5,6 +5,7 @@ import java.util.Observer;
 import com.openclassrooms.escapegame.controller.Controller;
 import com.openclassrooms.escapegame.model.Model;
 import com.openclassrooms.escapegame.model.ModelState;
+import com.openclassrooms.escapegame.utils.IConsole;
 
 /**
  * Classe abstraite de gestion des vues
@@ -18,17 +19,22 @@ public abstract class View implements Observer
 	protected Controller _controller;
 	protected ModelState _modelState;
 	
+	protected IConsole _console;
+	
 	// ********************************************************************* constructors
 	/**
 	 * Constructeur s'inscrivant aurpès du modèle comme observateur
 	 * 
 	 * @param controller Controller : Le controller de la vue
 	 * @param model Model : Le modèle
+	 * @param console IConsole : La console d'affichage
 	 */
-	public View(Controller controller, Model model)
+	public View(Controller controller, Model model, IConsole console)
 	{
 		_model = model;
 		_controller = controller;
+		_console = console;
+		
 		_model.addObserver(this);
 	}
 	
@@ -40,7 +46,7 @@ public abstract class View implements Observer
 	 */
 	public void displayError(String message)
 	{
-		System.out.println(message);
+		_console.displayLine(message);
 	}
 	public void update(Observable o, Object arg)
 	{

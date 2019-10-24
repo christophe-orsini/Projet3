@@ -21,7 +21,13 @@ public class ChallengerController extends Controller
 	public ChallengerController(Model model)
 	{
 		super(model);
-		_view = new ChallengerView(this, _model);
+		_view = new ChallengerView(this, _model, new Console());
+		_model.notifyState();
+	}
+	public ChallengerController(Model model, IConsole console)
+	{
+		super(model);
+		_view = new ChallengerView(this, _model, console);
 		_model.notifyState();
 	}
 	// *********************************************** methods
