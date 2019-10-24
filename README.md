@@ -3,7 +3,7 @@
 ## Project N°3 Escape Game ONLINE
 
 * Développeur : Christophe ORSINI
-* Version     : 1.1.2
+* Version     : 1.1.3
 * Javadoc     : [ici](https://projet3.orsini-perso.fr) 
 
 ---

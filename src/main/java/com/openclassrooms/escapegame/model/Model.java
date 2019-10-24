@@ -1,8 +1,7 @@
 package com.openclassrooms.escapegame.model;
 
 import java.util.Observable;
-
-import com.openclassrooms.escapegame.utils.AppConfig;
+import com.openclassrooms.escapegame.utils.*;
 
 /**
  * Classe abstraite de gestion des modèles
@@ -38,6 +37,9 @@ public abstract class Model extends Observable
 		_modelState.setYouWin(false);
 		_modelState.setProposed(new Combinaison(AppConfig.getInstance().getNbDigits()));
 		_modelState.setIWin(false);
+		
+		AppLog.getLogger().info("Combinaison à trouver : " + _modelState.getSearched());
+		
 		notifyState();
 	}
 	/**

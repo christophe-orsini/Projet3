@@ -6,4 +6,4 @@ if not exist target\classes\log4j.xml (
 	echo Installation terminee. Relancer la commande 'run.bat' pour jouer.
 	pause
 )
-java -jar target\gameplaystudio-1.1.2.jar
+java -jar target\gameplaystudio-1.1.3.jar
