@@ -7,7 +7,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.openclassrooms</groupId>
 	<artifactId>gameplaystudio</artifactId>
-	<version>1.1.1</version>
+	<version>1.1.2</version>
 	<name>EscapeGame</name>
 	<description>Jeu Escape Game en mode console</description>
 	<url>https://github.com/christophe-orsini/Projet3</url>
@@ -17,6 +17,8 @@
 	</organization>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!--  user manual entries properties -->
+		<maven.version>3.6.2</maven.version>
 	</properties>
 	<dependencies>
 		<!-- *********************************************** Modules ************************************** -->
@@ -65,7 +67,6 @@
 			</activation>
 			<properties>
 				<mode.developpeur>false</mode.developpeur>
-				<timestamp>${maven.build.timestamp}</timestamp>
 			</properties>
 		</profile>
 	</profiles>
@@ -74,22 +75,17 @@
 		<!-- *************************************************** Plugins ********************************** -->
 		<plugins>
 			<plugin>
-				<!-- exec -->
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.6.0</version>
-				<executions>
-					<execution>
-						<id>my-execution</id>
-						<phase>package</phase>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>com.openclassrooms.escapegame.Application</mainClass>
-				</configuration>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-shade-plugin</artifactId>
+			    <version>3.2.1</version>
+			    <executions>
+			    	<execution>
+			    		<phase>package</phase>
+			    		<goals>
+			    			<goal>shade</goal>
+			    		</goals>
+			    	</execution>
+			    </executions>
 			</plugin>
 			<!-- jar -->
 			<plugin>
