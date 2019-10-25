@@ -1,5 +1,5 @@
 @echo off
-chcp 65001
+chcp 850
 cls
 if not exist target\gameplaystudio-${project.version}.jar (
 	echo **************************************************************************************

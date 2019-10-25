@@ -22,25 +22,25 @@ public class FightView extends View
 	 * @param controller Controller : le controleur qui gère la vue
 	 * @param model Model : Le modèle correspondant
 	 */
-	public FightView(Controller controller, Model model)
+	public FightView(Controller controller, Model model, IConsole console)
 	{
-		super(controller, model);
+		super(controller, model, console);
 	}
 	
 	// ******************************************************* methods
 	@Override
 	public void displayInstructions() {
 		// consignes
-		System.out.println("Nous allons jouer chacun à notre tour pour deviner une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) en " +
+		_console.displayLine("Nous allons jouer chacun à notre tour pour deviner une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) en " +
 				AppConfig.getInstance().getNbTries() + " tentative(s).");
-		System.out.println("Le premier qui arrive à deviner la combinaison de l'autre a gagné.");
-		System.out.println("Avant de commmencer, pensez à une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s).");
-		System.out.println("D'abord vous corrigez ma proposition et ensuite vous essayez de deviner ma combinaison. Allons-y !");
+		_console.displayLine("Le premier qui arrive à deviner la combinaison de l'autre a gagné.");
+		_console.displayLine("Avant de commmencer, pensez à une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s).");
+		_console.displayLine("D'abord vous corrigez ma proposition et ensuite vous essayez de deviner ma combinaison. Allons-y !");
 		
 		// mode developpement
 		if (AppConfig.getInstance().isDebug())
 		{
-			System.out.println("Développement : solution = " + _modelState.getSearched());
+			_console.displayLine("Développement : solution = " + _modelState.getSearched());
 		}
 	}
 	@Override
@@ -48,12 +48,15 @@ public class FightView extends View
 	{
 		if (entryMode == EntryMode.CHALLENGER)
 		{
-			System.out.printf("%65s %d : ", "Veuillez faire votre proposition N°", tryNumber);	
+			String message = String.format("%65s %d : ", "Veuillez faire votre proposition N°", tryNumber);
+			_console.display(message);
 		}
 		if (entryMode == EntryMode.DEFENDER)
 		{
-			System.out.printf("%46s%d : %s%n","Voici ma proposition N°", tryNumber, _modelState.getProposed());
-			System.out.printf("%50s", "Veuillez m'indiquer mes erreurs avec + - = : ");
+			String message = String.format("%46s%d : %s%n","Voici ma proposition N°", tryNumber, _modelState.getProposed());
+			_console.display(message);
+			message = String.format("%50s", "Veuillez m'indiquer mes erreurs avec + - = : ");
+			_console.display(message);
 		}
 		_entry = new Scanner(System.in);
 		String proposition = _entry.nextLine();
@@ -63,18 +66,19 @@ public class FightView extends View
 	@Override
 	public void displayResult()
 	{
-		System.out.printf("%67s : %s%n", "Resultat", _modelState.getResult());
+		String message = String.format("%67s : %s%n", "Resultat", _modelState.getResult());
+		_console.display(message);
 	}
 	@Override
 	public void displayWin(int nbTries)
 	{
 		if (_modelState.isYouWin())
 		{
-			System.out.println("BRAVO ! Vous avez gangé en " + nbTries + " tentative(s). La réponse est : " + _modelState.getSearched());
+			_console.displayLine("BRAVO ! Vous avez gangé en " + nbTries + " tentative(s). La réponse est : " + _modelState.getSearched());
 		}
 		if (_modelState.isIWin())
 		{
-			System.out.println("YOUPI ! J'ai gangé en " + nbTries + " tentative(s). La réponse est : " + _modelState.getProposed());
+			_console.displayLine("YOUPI ! J'ai gangé en " + nbTries + " tentative(s). La réponse est : " + _modelState.getProposed());
 		}
 	}
 	@Override
@@ -82,11 +86,11 @@ public class FightView extends View
 	{
 		if (!_modelState.isYouWin())
 		{
-			System.out.println("Dommage, vous n'avez pas trouvé la combinaison. La réponse était : " + _modelState.getSearched());
+			_console.displayLine("Dommage, vous n'avez pas trouvé la combinaison. La réponse était : " + _modelState.getSearched());
 		}
 		if (!_modelState.isIWin())
 		{
-			System.out.println("Dommage, je n'ai pas trouvé la combinaison.");
+			_console.displayLine("Dommage, je n'ai pas trouvé la combinaison.");
 		}
 	}
 }

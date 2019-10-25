@@ -21,9 +21,10 @@ public class ChallengerController extends Controller
 	public ChallengerController(Model model)
 	{
 		super(model);
-		_view = new ChallengerView(this, _model);
+		_view = new ChallengerView(this, _model, ConsoleFactory.getConsole(null));
 		_model.notifyState();
 	}
+	
 	// *********************************************** methods
 	@Override
 	public void run()

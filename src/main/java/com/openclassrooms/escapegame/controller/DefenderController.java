@@ -21,7 +21,7 @@ public class DefenderController extends Controller
 	public DefenderController(Model model)
 	{
 		super(model);
-		_view = new DefenderView(this, _model);
+		_view = new DefenderView(this, _model, new Console());
 		
 		// creation de la premiere proposition
 		_model.notifyState();

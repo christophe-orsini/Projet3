@@ -3,7 +3,7 @@
 ## Project N°3 Escape Game ONLINE
 
 * Développeur : Christophe ORSINI
-* Version     : 1.1.4
+* Version     : 1.2.0
 * Javadoc     : [ici](https://projet3.orsini-perso.fr) 
 
 ---
@@ -63,3 +63,8 @@ Tapez la commande `run` si vous êtes en mode console ou cliquez sur `run.bat`
      - Création du `install.bat`
      - Nouveau `run.bat`
      - Modification du `config.properties` et du `README.md`
+- Version 1.2.0
+    - Utilisation de Factory pour l'application et les vues
+    - Création de l'interface `IConsole` et de la classe `Console` pour l'affichage et la saisie
+    - Refonte de `Application`
+    - Correction bug saisie menu
