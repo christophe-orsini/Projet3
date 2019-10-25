@@ -65,6 +65,11 @@ public class Application
 					model.changeCombinaison();
 					controller.run();
 				}
+				else
+				{
+					continue;
+				}
+				break;
 			case 0:
 				break;
 			default:
@@ -98,7 +103,11 @@ public class Application
 		int choice = 0;
 		try {
 			choice = _entry.nextInt();
-		} catch (InputMismatchException e) {}
+		} catch (InputMismatchException e)
+		{
+			choice = -1;
+			_entry.nextLine(); // pour vider le buffer
+		}
 			
 		return choice;
 	}

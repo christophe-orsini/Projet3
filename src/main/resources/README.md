@@ -67,3 +67,4 @@ Tapez la commande `run` si vous êtes en mode console ou cliquez sur `run.bat`
     - Utilisation de Factory pour l'application et les vues
     - Création de l'interface `IConsole` et de la classe `Console` pour l'affichage et la saisie
     - Refonte de `Application`
+    - Correction bug saisie menu
