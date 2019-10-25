@@ -3,21 +3,22 @@
 ## Project N°3 Escape Game ONLINE
 
 * Développeur : Christophe ORSINI
-* Version     : 1.1.3
+* Version     : 1.1.4
 * Javadoc     : [ici](https://projet3.orsini-perso.fr) 
 
 ---
-### Chargement
-Clonez le dépôt à cette adresse [https://github.com/christophe-orsini/Projet3.git](https://github.com/christophe-orsini/Projet3.git)
-
 ### Prérequis
 Vous devez avoir **java** version **1.8.0_222** ou supérieur et **maven** version **3.6.2** ou supérieur sur votre ordinateur pour pouvoir exécuter cette application
 
-### Exécution
-1. Placez vous dans le dossier où vous avez cloné le dépôt  
-2. Tapez la commande `run` si vous êtes en mode console ou cliquez sur `run.bat`  
+### Chargement
+Clonez le dépôt à cette adresse [https://github.com/christophe-orsini/Projet3.git](https://github.com/christophe-orsini/Projet3.git)
 
-> Pour la première utilisation, cette commande installe l'application et vous devez la relancer pour jouer  
+### Installation
+1. Placez vous dans le dossier où vous avez cloné le dépôt  
+2. Tapez la commande `install` si vous êtes en mode console ou cliquez sur `install.bat`  
+
+### Exécution
+Tapez la commande `run` si vous êtes en mode console ou cliquez sur `run.bat`  
 
 ---
 #### Notes de versions
@@ -55,6 +56,10 @@ Vous devez avoir **java** version **1.8.0_222** ou supérieur et **maven** versi
 - Version 1.1.2
     - Incorporation des dépendances dans le jar
     - Refonte du `README.md`
-    - Correction du `run.bat`
+    - Correction du `run.bat`  
 - Version 1.1.3
      - Correction bug log combinaison ne se fait pas lorsque l'on rejoue
+- Version 1.1.4
+     - Création du `install.bat`
+     - Nouveau `run.bat`
+     - Modification du `config.properties` et du `README.md`
