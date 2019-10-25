@@ -1,4 +1,5 @@
 @echo off
+chcp 850
 cls
 if not exist target\classes\log4j.xml (
 	mvn clean package
