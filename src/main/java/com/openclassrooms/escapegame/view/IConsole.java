@@ -1,4 +1,4 @@
-package com.openclassrooms.escapegame.utils;
+package com.openclassrooms.escapegame.view;
 
 /**
  * @author C.ORSINI
