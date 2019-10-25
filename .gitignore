@@ -6,3 +6,4 @@
 .classpath
 /callCmd.bat
 /dependency-reduced-pom.xml
+*.orig
