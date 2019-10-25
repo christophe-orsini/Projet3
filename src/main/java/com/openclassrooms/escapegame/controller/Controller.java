@@ -3,10 +3,9 @@ package com.openclassrooms.escapegame.controller;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.regex.Pattern;
-import com.openclassrooms.escapegame.model.Model;
-import com.openclassrooms.escapegame.model.ModelState;
-import com.openclassrooms.escapegame.utils.AppConfig;
-import com.openclassrooms.escapegame.view.View;
+import com.openclassrooms.escapegame.model.*;
+import com.openclassrooms.escapegame.utils.*;
+import com.openclassrooms.escapegame.view.*;
 
 /**
  * Classe abstraite de gestion des controleurs

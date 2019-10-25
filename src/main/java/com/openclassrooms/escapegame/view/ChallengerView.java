@@ -3,7 +3,6 @@ package com.openclassrooms.escapegame.view;
 import com.openclassrooms.escapegame.controller.*;
 import com.openclassrooms.escapegame.model.*;
 import com.openclassrooms.escapegame.utils.AppConfig;
-import com.openclassrooms.escapegame.utils.IConsole;
 
 /**
  * Vue console du mode attaquant qui affiche les infos et demande les entrées
@@ -44,7 +43,7 @@ public class ChallengerView extends View
 	public String queryEntry(EntryMode entryMode, int tryNumber)
 	{
 		String message = String.format("%35s %d : ", "Veuillez faire la proposition N°", tryNumber);
-		_console.displayLine(message);
+		_console.display(message);
 		
 		String proposition = _console.scan();
 		return proposition;
@@ -53,7 +52,7 @@ public class ChallengerView extends View
 	public void displayResult()
 	{
 		String message = String.format("%37s : %s%n", "Resultat", _modelState.getResult());
-		_console.displayLine(message);
+		_console.display(message);
 	}
 	@Override
 	public void displayWin(int nbTries)

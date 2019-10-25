@@ -1,6 +1,6 @@
 package com.openclassrooms.escapegame;
 
-import com.openclassrooms.escapegame.utils.IConsole;
+import com.openclassrooms.escapegame.view.IConsole;
 
 public class DummyConsole implements IConsole
 {

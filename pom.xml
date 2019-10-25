@@ -7,7 +7,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.openclassrooms</groupId>
 	<artifactId>gameplaystudio</artifactId>
-	<version>1.1.3</version>
+	<version>1.2.0</version>
 	<name>EscapeGame</name>
 	<description>Jeu Escape Game en mode console</description>
 	<url>https://github.com/christophe-orsini/Projet3</url>
@@ -42,13 +42,14 @@
 			<build>
 				<resources>
 					<resource>
-						<directory>src/main/resources/dev</directory>
+						<directory>src/main/resources</directory>
 						<filtering>true</filtering>
 					</resource>
 				</resources>
 			</build>
 			<properties>
-				<mode.developpeur>true</mode.developpeur>
+				<config.developpeur>true</config.developpeur>
+				<config.version>${project.version}-DEV</config.version>
 			</properties>
 		</profile>
 		<!-- Production -->
@@ -57,7 +58,7 @@
 			<build>
 				<resources>
 					<resource>
-						<directory>src/main/resources/prod</directory>
+						<directory>src/main/resources</directory>
 						<filtering>true</filtering>
 					</resource>
 				</resources>
@@ -66,7 +67,8 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<mode.developpeur>false</mode.developpeur>
+				<config.developpeur>false</config.developpeur>
+				<config.version>${project.version}</config.version>
 			</properties>
 		</profile>
 	</profiles>
@@ -74,6 +76,15 @@
 	<build>
 		<!-- *************************************************** Plugins ********************************** -->
 		<plugins>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-compiler-plugin</artifactId>
+		        <version>3.8.1</version>
+		        <configuration>
+		          <source>1.8</source>
+		          <target>1.8</target>
+		        </configuration>
+		    </plugin>
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-shade-plugin</artifactId>
@@ -87,7 +98,6 @@
 			    	</execution>
 			    </executions>
 			</plugin>
-			<!-- jar -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -100,7 +110,6 @@
 					</archive>
 				</configuration>
 			</plugin>
-			<!-- resources -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>

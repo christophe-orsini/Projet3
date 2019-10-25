@@ -38,10 +38,10 @@ public class DefenderView extends View
 	@Override
 	public String queryEntry(EntryMode entryMode, int tryNumber)
 	{
-		String message = String.format("%46s%d : %s%n","Voici ma proposition N°", tryNumber, _modelState.getProposed());
+		String message = String.format("%46s%d : %s","Voici ma proposition N°", tryNumber, _modelState.getProposed());
 		_console.displayLine(message);
 		message = String.format("%50s", "Veuillez m'indiquer mes erreurs avec + - = : ");
-		_console.displayLine(message);
+		_console.display(message);
 		
 		_entry = new Scanner(System.in);
 		String proposition = _entry.nextLine();

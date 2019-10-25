@@ -5,7 +5,6 @@ import java.util.Observer;
 import com.openclassrooms.escapegame.controller.Controller;
 import com.openclassrooms.escapegame.model.Model;
 import com.openclassrooms.escapegame.model.ModelState;
-import com.openclassrooms.escapegame.utils.IConsole;
 
 /**
  * Classe abstraite de gestion des vues

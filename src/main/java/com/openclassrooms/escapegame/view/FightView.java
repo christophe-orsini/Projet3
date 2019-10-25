@@ -49,14 +49,14 @@ public class FightView extends View
 		if (entryMode == EntryMode.CHALLENGER)
 		{
 			String message = String.format("%65s %d : ", "Veuillez faire votre proposition N°", tryNumber);
-			_console.displayLine(message);
+			_console.display(message);
 		}
 		if (entryMode == EntryMode.DEFENDER)
 		{
 			String message = String.format("%46s%d : %s%n","Voici ma proposition N°", tryNumber, _modelState.getProposed());
-			_console.displayLine(message);
+			_console.display(message);
 			message = String.format("%50s", "Veuillez m'indiquer mes erreurs avec + - = : ");
-			_console.displayLine(message);
+			_console.display(message);
 		}
 		_entry = new Scanner(System.in);
 		String proposition = _entry.nextLine();
@@ -67,7 +67,7 @@ public class FightView extends View
 	public void displayResult()
 	{
 		String message = String.format("%67s : %s%n", "Resultat", _modelState.getResult());
-		_console.displayLine(message);
+		_console.display(message);
 	}
 	@Override
 	public void displayWin(int nbTries)
