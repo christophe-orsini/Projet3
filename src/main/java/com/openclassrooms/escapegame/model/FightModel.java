@@ -47,4 +47,9 @@ public class FightModel extends Model
 		}
 		notifyState();
 	}
+	@Override
+	public boolean checkResponse(String entry) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

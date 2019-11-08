@@ -60,6 +60,6 @@ public class DefenderView extends View
 	
 	@Override
 	public void displayResult() {
-		// rien a faire
+		_console.displayLine("Saisie érronée. D'après vos saisies précédente, vous devriez saisir : " + _modelState.getResult());
 	}
 }
