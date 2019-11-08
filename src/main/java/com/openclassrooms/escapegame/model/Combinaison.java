@@ -170,7 +170,7 @@ public class Combinaison
 		return "=";
 	}
 	/**
-	 * Elabore une nouvelle combinaison en fonction dune chaine de + - ou =
+	 * Elabore une nouvelle combinaison en fonction d'une chaine de + - ou =
 	 * 
 	 * @param code String : Chaine de symbole<BR />
 	 * 			= si le chifre est bon<BR />
@@ -182,7 +182,7 @@ public class Combinaison
 	{
 		if (code.length() != nbDigits)
 		{
-			return this;
+			return this; // TODO renvoyer une erreur
 		}
 		
 		char[] newCombinaison = combinaison.toCharArray();
@@ -195,13 +195,13 @@ public class Combinaison
 			{
 			case '-':
 				// (max - min) / 2 + min
-				newMax[i] = (char)(Character.getNumericValue(newCombinaison[i]) - 1 + '0');
-				newCombinaison[i] = (char)(mean(newMin[i], newMax[i]) + Character.getNumericValue(newMin[i]) + '0');
-				break;
+					newMax[i] = (char)(Math.max(Character.getNumericValue(newCombinaison[i]) - 1, Character.getNumericValue(newMin[i])) + '0');
+					newCombinaison[i] = (char)(mean(newMin[i], newMax[i]) + Character.getNumericValue(newMin[i]) + '0');
+			break;
 			case '+':
 				// (max - min) / 2 + min
-				newMin[i] = (char)(Character.getNumericValue(newCombinaison[i]) + 1 + '0');
-				newCombinaison[i] = (char)(mean(newMin[i], newMax[i]) + Character.getNumericValue(newMin[i]) + '0');
+					newMin[i] = (char)(Math.min(Character.getNumericValue(newCombinaison[i]) + 1, Character.getNumericValue(newMax[i])) + '0');
+					newCombinaison[i] = (char)(mean(newMin[i], newMax[i]) + Character.getNumericValue(newMin[i]) + '0');
 				break;
 			default:
 				newMin[i] = newMax[i] = newCombinaison[i];
@@ -212,6 +212,59 @@ public class Combinaison
 		max = new String(newMax);
 		
 		return this;
+	}
+	/**
+	 * Controle si la correction du joueur est cohérente et retourne la bonne correction
+	 * 
+	 * @param code String : Chaine de symbole<BR />
+	 * 			= si le chiffre est bon<BR />
+	 * 			+ si le chiffre a deviner est plus grand<BR />
+	 * 			- si le chiffre a deviner est plus petit
+	 * @return String : une nouvelle proposition de corrcetion ou null si la correction est correcte
+	 */
+	public String checkResponse(String code)
+	{
+		if (code.length() != nbDigits)
+		{
+			return null; // TODO renvoyer une erreur
+		}
+		
+		char[] newCombinaison = combinaison.toCharArray();
+		char[] newMin = min.toCharArray();
+		char[] newMax = max.toCharArray();
+		char[] newResult = code.toCharArray();
+		int digit = 0;
+		boolean flag_change = false;
+		
+		for (int i=0; i<nbDigits; i++)
+		{
+			switch (code.charAt(i))
+			{
+			case '-':
+				digit = Character.getNumericValue(newCombinaison[i]);
+				if (digit <= Character.getNumericValue(newMin[i])) 
+				{
+					newResult[i] = '=';
+					flag_change = true;
+				}
+				break;
+			case '+':
+				digit = Character.getNumericValue(newCombinaison[i]);
+				if (digit >= Character.getNumericValue(newMax[i]))
+				{
+					newResult[i] = '=';
+					flag_change = true;
+				}
+				break;
+			default:
+			}
+		}
+		
+		if (flag_change)
+		{
+			return new String(newResult);
+		}
+		return null;
 	}
 	/**
 	 * Verifie si la combinaison est trouve avec un code ne comprenant que des =
@@ -226,7 +279,7 @@ public class Combinaison
 	{
 		if (code.length() != nbDigits)
 		{
-			return false;
+			return false; // TODO renvoyer une erreur
 		}
 		for (int i = 0, c = code.length(); i < c; i++)
 		{
@@ -259,7 +312,7 @@ public class Combinaison
 	 * Calcule le milieu de l'intervalle
 	 * @param min char : valeur mini
 	 * @param max char : valeur maxi
-	 * @return int : milieur de l'intervalle
+	 * @return int : milieu de l'intervalle
 	 */
 	private int mean(char min, char max)
 	{

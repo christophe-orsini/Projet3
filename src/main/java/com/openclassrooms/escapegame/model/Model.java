@@ -49,6 +49,13 @@ public abstract class Model extends Observable
 	 */
 	public abstract void manageEntry(String entry);
 	
+	/**
+	 * Controle si une entrée est cohérente
+	 * @param entry  String : l'entréé à vérifier
+	 * @return true si la réponse est correcte sinon false
+	 */
+	public abstract boolean checkResponse(String entry); 
+	
 	// ***************************************************************** getters
 	@SuppressWarnings("javadoc")
 	public Combinaison getSearched() {

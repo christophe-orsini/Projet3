@@ -59,7 +59,8 @@ public class DefenderView extends View
 	}
 	
 	@Override
-	public void displayResult() {
+	public void displayResult()
+	{
 		// rien a faire
 	}
 }
