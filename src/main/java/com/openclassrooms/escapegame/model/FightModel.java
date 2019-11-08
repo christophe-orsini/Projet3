@@ -47,4 +47,12 @@ public class FightModel extends Model
 		}
 		notifyState();
 	}
+	@Override
+	public boolean checkResponse(String entry)
+	{
+		_modelState.setResult(_modelState.getProposed().checkResponse(entry));
+		
+		notifyState();
+		return (null==_modelState.getResult())?true:false;
+	}
 }

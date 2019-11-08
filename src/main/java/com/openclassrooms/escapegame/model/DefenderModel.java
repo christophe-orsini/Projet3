@@ -32,4 +32,12 @@ public class DefenderModel extends Model
 		_modelState.setProposed(_modelState.getProposed().search(response)); // elabore une nouvelle combinaison proposee
 		notifyState();
 	}
+	@Override
+	public boolean checkResponse(String entry)
+	{
+		_modelState.setResult(_modelState.getProposed().checkResponse(entry));
+		
+		notifyState();
+		return (null==_modelState.getResult())?true:false;
+	}
 }

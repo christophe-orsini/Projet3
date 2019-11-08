@@ -33,4 +33,9 @@ public class ChallengerModel extends Model
 		_modelState.setResult(_modelState.getSearched().compareTo(propose)); // elabore la reponse
 		notifyState();
 	}
+	@Override
+	public boolean checkResponse(String entry) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

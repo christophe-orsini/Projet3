@@ -44,8 +44,15 @@ public class DefenderController extends Controller
 				continue;
 			}
 			AppLog.getLogger().info("Proposition N°" + nbTours + " : " + _modelState.getProposed()+ " -> Reponse : " + entry);
-			_model.manageEntry(entry); // passe la main au modele pour controler la reponse
-			nbTours++;
+			if (!_model.checkResponse(entry))  // passe la main au modele pour controler la reponse
+			{
+				_view.displayError("Saisie erronée. D'après ma(mes) proposition(s) et votre(vos) saisie(s), je vous suggère : " + _modelState.getResult());
+			}
+			else
+			{
+				_model.manageEntry(entry);  // passe la main au modele pour controler la réponse et faire une proposition
+				nbTours++;
+			}
 		}
 		nbTours--;
 		
