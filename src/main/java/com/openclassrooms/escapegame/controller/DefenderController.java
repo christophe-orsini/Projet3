@@ -46,7 +46,7 @@ public class DefenderController extends Controller
 			AppLog.getLogger().info("Proposition N°" + nbTours + " : " + _modelState.getProposed()+ " -> Reponse : " + entry);
 			if (!_model.checkResponse(entry))  // passe la main au modele pour controler la reponse
 			{
-				_view.displayError("Saisie erronée. D'après ma(mes) proposition(s) et votre(vos) saisie(s) précédente(s), je vous suggère : " + _modelState.getResult());
+				_view.displayError("Saisie erronée. D'après ma(mes) proposition(s) et votre(vos) saisie(s), je vous suggère : " + _modelState.getResult());
 			}
 			else
 			{

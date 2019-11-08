@@ -41,13 +41,18 @@ public class FightController extends Controller
 				entry = _view.queryEntry(EntryMode.DEFENDER, nbTours); // affiche la proposition et attend la reponse
 				if (!checkEntry("^(-|\\+|=)*$", entry)) // verifie que la reponse comprend des symboles + - =  et est de la bonne longueur
 				{
-					_view.displayError("Veuillez entrer une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffre(s) SVP !");
+					_view.displayError("Veuillez entrer une réponse à " + AppConfig.getInstance().getNbDigits() + " symbole(s) SVP !");
 					continue;
 				}
 				check = false;
 			} while (check);
 			
 			AppLog.getLogger().info("Proposition N°" + nbTours + " : " + _modelState.getProposed()+ " -> Reponse : " + entry);
+			if (!_model.checkResponse(entry))  // passe la main au modele pour controler la reponse
+			{
+				_view.displayError("Saisie erronée. D'après ma(mes) proposition(s) et votre(vos) saisie(s), je vous suggère : " + _modelState.getResult());
+				continue;
+			}
 			_model.manageEntry(entry); // passe la main au modele pour controler la reponse
 			
 			check = true;
@@ -55,7 +60,7 @@ public class FightController extends Controller
 				entry = _view.queryEntry(EntryMode.CHALLENGER, nbTours); // affiche la demande de proposition et attend la proposition
 				if (!checkEntry("^[0-9]*$", entry)) // verifie que la proposition comprend des chiffres et est de la bonne longueur
 				{
-					_view.displayError("Veuillez entrer une réponse à " + AppConfig.getInstance().getNbDigits() + " symbole(s) SVP !");
+					_view.displayError("Veuillez entrer une combinaison à " + AppConfig.getInstance().getNbDigits() + " chiffres(s) SVP !");
 					continue;
 				}
 				check = false;
