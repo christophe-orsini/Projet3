@@ -67,4 +67,7 @@ Tapez la commande `run` si vous êtes en mode console ou cliquez sur `run.bat`
     - Utilisation de Factory pour l'application et les vues
     - Création de l'interface `IConsole` et de la classe `Console` pour l'affichage et la saisie
     - Refonte de `Application`
-    - Correction bug saisie menu
+    - Correction bug saisie menu  
+- Version 1.3.0
+    - Ajout d'un controle d'erreur de saisie du joueur en mode défenseur et duel
+    - Correction des tests
