@@ -180,19 +180,64 @@ public class CombinaisonTest
 	@Test
 	public void searchTest()
 	{
+		// test proposition
 		Combinaison proposition = new Combinaison("345");
 		Combinaison expected = new Combinaison("147");
-		String actual ="-=+";
-		assertEquals("Recherche pour 345 -> -=+", expected, proposition.search(actual));
+		Combinaison actual = proposition.search("-=+");
+		assertEquals("Recherche pour 345 -> -=+", expected, actual);
 		
 		proposition = new Combinaison("543");
 		expected = new Combinaison("741");
-		actual = "+=-";
-		assertEquals("Recherche pour 543 -> +=-", expected, proposition.search(actual));
+		actual = proposition.search("+=-");
+		assertEquals("Recherche pour 543 -> +=-", expected, actual);
 		
+		// test mini a 0
+		proposition = new Combinaison("0");
+		expected = new Combinaison("0");
+		actual = proposition.search("-");
+		assertEquals("Recherche pour 0 -> -", expected, actual);
+		
+		// test maxi a 9
 		proposition = new Combinaison("9");
 		expected = new Combinaison("9");
-		actual = "+";
-		assertEquals("Recherche pour 0 -> -", expected, proposition.search(actual));
+		actual = proposition.search("+");
+		assertEquals("Recherche pour 9 -> +", expected, actual);
+	}
+	
+	@SuppressWarnings("javadoc")
+	@Test
+	public void chekResponseTest()
+	{
+		// pas d'erreur
+		Combinaison proposition = new Combinaison("15");
+		String expected = null;
+		String actual = proposition.checkResponse("-+");
+		assertEquals("Correction 15 -> -+", expected, actual);
+		
+		// ne peut pas etre inférieur a 0
+		proposition = new Combinaison("50");
+		expected = "+=";
+		actual = proposition.checkResponse("+-");
+		assertEquals("Correction 50 -> +-", expected, actual);
+		
+		// ne peut pas etre superieur à 9
+		proposition = new Combinaison("39");
+		expected = "-=";
+		actual = proposition.checkResponse("-+");
+		assertEquals("Correction 39-> -+", expected, actual);
+		
+		// Si 1 - et 0 + alors 0
+		proposition = new Combinaison("71");
+		expected = "-=";
+		proposition = proposition.search("--");
+		actual = proposition.checkResponse("-+");
+		assertEquals("Correction 71 -> -- puis -+", expected, actual);
+		
+		// Si 8 + et 9 - alors 9
+		proposition = new Combinaison("38");
+		expected = "-=";
+		proposition = proposition.search("++");
+		actual = proposition.checkResponse("--");
+		assertEquals("Correction 38 -> ++ puis --", expected, actual);
 	}
 }
