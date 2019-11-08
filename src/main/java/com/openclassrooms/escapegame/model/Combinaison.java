@@ -170,7 +170,7 @@ public class Combinaison
 		return "=";
 	}
 	/**
-	 * Elabore une nouvelle combinaison en fonction dune chaine de + - ou =
+	 * Elabore une nouvelle combinaison en fonction d'une chaine de + - ou =
 	 * 
 	 * @param code String : Chaine de symbole<BR />
 	 * 			= si le chifre est bon<BR />
@@ -182,7 +182,7 @@ public class Combinaison
 	{
 		if (code.length() != nbDigits)
 		{
-			return this;
+			return this; // TODO renvoyer une erreur
 		}
 		
 		char[] newCombinaison = combinaison.toCharArray();
@@ -226,7 +226,7 @@ public class Combinaison
 	{
 		if (code.length() != nbDigits)
 		{
-			return false;
+			return false; // TODO renvoyer une erreur
 		}
 		for (int i = 0, c = code.length(); i < c; i++)
 		{
@@ -259,7 +259,7 @@ public class Combinaison
 	 * Calcule le milieu de l'intervalle
 	 * @param min char : valeur mini
 	 * @param max char : valeur maxi
-	 * @return int : milieur de l'intervalle
+	 * @return int : milieu de l'intervalle
 	 */
 	private int mean(char min, char max)
 	{
